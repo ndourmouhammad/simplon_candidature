@@ -65,54 +65,29 @@
 
           </div>
           <div >
-            <div class="header">
-                <h1>Liste des candidats</h1>
-                @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                <div class="form-inline">
-                    <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
-                    <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
+             
+            <div class="container mt-5">
+                <div class="profile-info">
+                    <h4 class="candidate-name">{{ $candidat->prenom }} {{ $candidat->nom }}</h4>
+                    <p class="formation">Formation postuleé : Adefnipa</p>
+                </div>
+                <div class="contact-icons mb-4">
+                    <a href="#"><img src="{{ asset('img/icon.svg') }}" alt="" class="mr-2 ">{{ $candidat->adresse }}</a>
+                    <a href="#"><img src="{{ asset('img/Phone.svg') }}" alt="" class="mr-2">{{ $candidat->telephone }}</a>
+                    <a href="#"><img src="{{ asset('img/Mail.svg') }}" alt="" class="mr-2">{{ $candidat->email }}</a>
+                </div>
+                <div class="biographie">
+                    <h4>Biographie</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="description">
+                    <h4>Description</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="pdf-link">
+                    <a href="path/to/cv.pdf" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
                 </div>
             </div>
-          
-
-          <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse email</th>
-                    <th>Formation postulée</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="candidatesTable">
-                @foreach ($candidats as $candidat)
-                <tr>
-                    <td>{{ $candidat->nom }}</td>
-                    <td>{{ $candidat->prenom }}</td>
-                    <td>{{ $candidat->email }}</td>
-                    <td>Adefnipa</td>
-                    
-                    <td class="action">
-
-                        <a href="{{ route('detail-candidat', $candidat->id) }}"><img src="img/view.svg" alt=""></a>
-
-                        <a href="{{ route('supprimer-candidat', $candidat->id) }}"><img src="img/trashh.svg" alt=""></a>
-                    </td>
-                </tr>
-                @endforeach
-               
-            </tbody>
-        </table>    
-          
-          <div class="d-flex justify-content-center mt-4">
-            {{ $candidats->links() }}
-          </div>
-
 
         </main>
       </div>
