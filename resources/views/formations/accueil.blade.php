@@ -14,7 +14,7 @@
   <body>
     <div class="accueil container-fluid p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" class="image"/></a>
+        <a class="navbar-brand" href="#"><img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" width="130px" class="image"/></a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -41,7 +41,7 @@
       <div class="container my-5">
         <div class="row align-items-center">
           <div class="col-md-6">
-            <img src="https://img.freepik.com/photos-gratuite/participation-homme-formation-apres-avoir-ete-embauche-son-nouveau-travail-bureau_23-2149034623.jpg?t=st=1718208262~exp=1718211862~hmac=486236d3a4f4ea73cc992461b5aea818dfa55c4decbfa45ff38eec7265137366&w=996" alt="Banner Image" class="img-fluid"/>
+            <img src="https://img.freepik.com/photos-gratuite/participation-homme-formation-apres-avoir-ete-embauche-son-nouveau-travail-bureau_23-2149034623.jpg?t=st=1718208262~exp=1718211862~hmac=486236d3a4f4ea73cc992461b5aea818dfa55c4decbfa45ff38eec7265137366&w=996"  alt="Banner Image" class="img-fluid"/>
           </div>
           <div class="col-md-6">
             <h2 class="text-wrapper-5 ">Portail SIMPLON</h2>
