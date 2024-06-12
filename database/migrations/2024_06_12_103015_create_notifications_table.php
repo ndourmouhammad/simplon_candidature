@@ -19,10 +19,7 @@ return new class extends Migration
             // date_heure_envoi
             $table->timestamps();
 
-            // Ajoute une colonne 'user_id' de type entier non signé pour la clé étrangère
-            $table->unsignedBigInteger('user_id');
-            // Définit 'user_id' comme clé étrangère, liée à la colonne 'id' de la table 'users'
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+           
 
             // Ajoute une colonne 'candidature_id' de type entier non signé pour la clé étrangère
             $table->unsignedBigInteger('candidature_id');
@@ -36,11 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Supprime la contrainte de clé étrangère 'notifications_user_id_foreign' avant de supprimer la colonne 'user_id'
-        Schema::table('notifications', function (Blueprint $table) {
-            $table->dropForeign('notifications_user_id_foreign');
-            $table->dropColumn('user_id');
-        });
+        
 
         // Supprime la contrainte de clé étrangère 'notifications_candidature_id_foreign' avant de supprimer la colonne 'candidature_id'
         Schema::table('notifications', function (Blueprint $table) {

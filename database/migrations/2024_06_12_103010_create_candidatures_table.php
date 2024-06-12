@@ -30,6 +30,8 @@ return new class extends Migration
             $table->unsignedBigInteger('cohorte_id');
             // Définit 'cohorte_id' comme clé étrangère, liée à la colonne 'id' de la table 'cohorte'
             $table->foreign('cohorte_id')->references('id')->on('cohortes')->onDelete('cascade')->onUpdate('cascade');
+
+            
         });
     }
 
@@ -49,6 +51,8 @@ return new class extends Migration
             $table->dropForeign('candidatures_cohorte_id_foreign');
             $table->dropColumn('cohorte_id');
         });
+
+        
 
         Schema::dropIfExists('candidatures');
     }

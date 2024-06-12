@@ -17,9 +17,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
         'password',
+        'telephone',
+        'role',
+        'date_naissance',
+        'adresse',
+        'cv_professionnel'
     ];
 
     /**
@@ -43,5 +49,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function candidatures()
+    {
+        return $this->hasMany(Candidature::class);
     }
 }
