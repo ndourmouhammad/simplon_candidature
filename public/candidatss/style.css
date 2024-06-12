@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.sidebar .nav-link.active {
+  color: #504DC1;
+  background-color: #F1F5F8;
+}
+
+.sidebar .nav-link {
+  color: #333;
+}
+
+.sidebar .nav-link:hover {
+  color: #F1F5F8;
+  background-color: #504DC1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.filtre {
+  margin-top: 20px;
+}
+
+.filtre .input-group {
+  width: 100%;
+}
+
+.logo {
+  width: 150px;
+  margin: 20px auto;
+  display: block;
+}
+.table thead th {
+  background-color: #c3002f;
+  color: white;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.header h1 {
+  margin: 0;
+}
+.action {
+  display: flex;
+  justify-content: space-around;
+}
