@@ -27,7 +27,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('candidats') }}" class="nav-link active">
                     <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
