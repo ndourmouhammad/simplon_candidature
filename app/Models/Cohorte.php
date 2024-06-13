@@ -19,13 +19,18 @@ class Cohorte extends Model
         'referentiel_id'
     ];
 
-    public function candidature()
+    public function candidatures()
     {
-        return $this->belongsTo(Candidature::class);
+        return $this->hasMany(Candidature::class);
     }
 
-    public function referentiels()
+    public function referentiel()
+{
+    return $this->belongsTo(Referentiel::class);
+}
+
+public function users()
     {
-        return $this->hasMany(Referentiel::class);
+        return $this->hasManyThrough(User::class, Candidature::class);
     }
 }
