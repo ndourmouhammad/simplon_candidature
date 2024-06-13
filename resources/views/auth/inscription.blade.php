@@ -143,12 +143,12 @@
         <div class="register-form">
             <img src="https://tse4.mm.bing.net/th?id=OIP.4v3p4mP-yyOEapEKb-t7AAHaHT&pid=Api&P=0&h=180" alt="Logo" class="logo">
             <h2>Inscrivez-vous pour rejoindre notre communauté</h2>
-            <form action="{{ route('auth.traitement_inscription') }}" method="post">
+            <form action="{{ route('auth.traitement.inscription') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
                     <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+                    <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{ old('prenom') }}">
                     @error('prenom')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -156,7 +156,7 @@
 
                 <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                    <input type="text" id="nom" name="nom" placeholder="Nom" value="{{ old('nom') }}">
                     @error('nom')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -164,7 +164,7 @@
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                     @error('email')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -172,7 +172,7 @@
 
                 <div class="form-group">
                     <label for="password">Mot de Passe</label>
-                    <input type="password" id="password" name="password" placeholder="Mot de Passe" required>
+                    <input type="password" id="password" name="password" placeholder="Mot de Passe" >
                     @error('password')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -180,7 +180,7 @@
 
                 <div class="form-group">
                     <label for="telephone">Téléphone</label>
-                    <input type="text" id="telephone" name="telephone" placeholder="Téléphone" required>
+                    <input type="text" id="telephone" name="telephone" placeholder="Téléphone" value="{{ old('telephone') }}">
                     @error('telephone')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -188,16 +188,23 @@
 
                 <div class="form-group">
                     <label for="dob">Date de naissance</label>
-                    <input type="date" id="dob" name="dob" placeholder="Date de naissance" required>
-                    @error('dob')
+                    <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" value="{{ old('date_naissance') }}">
+                    @error('date_naissance')
                     <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="adresse">Adresse</label>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="{{ old('adresse') }}">
                     @error('adresse')
+                    <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="cv_professionnel">cv_professionnel</label>
+                    <input type="text" id="cv_professionnel" name="cv_professionnel" placeholder="cv_professionnel" value="{{ old('cv_professionnel') }}">
+                    @error('cv_professionnel')
                     <span class="error">{{ $message }}</span>
                     @enderror
                 </div>

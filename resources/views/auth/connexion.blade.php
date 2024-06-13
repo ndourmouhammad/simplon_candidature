@@ -105,7 +105,7 @@
             <img src="https://tse4.mm.bing.net/th?id=OIP.4v3p4mP-yyOEapEKb-t7AAHaHT&pid=Api&P=0&h=180" alt="Logo" class="logo">
 
             <h2>Connectez-vous pour accéder à votre espace</h2>
-            <form action="{{ route('auth.traitement_inscription') }}" method="post">
+            <form action="{{ route('auth.traitement_connexion') }}" method="post">
                 @csrf
 
                 <label for="email">Email</label>
