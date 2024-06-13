@@ -33,4 +33,8 @@ public function users()
     {
         return $this->hasManyThrough(User::class, Candidature::class);
     }
+    public function competences()
+    {
+        return $this->referentiel->competences();
+    }
 }

@@ -58,4 +58,43 @@ class CohorteController extends Controller
         $competences = Competence::all();
         return view('dashboard.formations.ajout', compact('cohortes', 'referentiels', 'competences'));
     }
+
+    // traitement du formulaire de formation
+    public function ajoutFormation(Request $request)
+    {
+        $request->validate([
+            'libelle' => 'required|string|max:255',
+            'promo' => 'required|integer',
+            'description' => 'required|string',
+            'competences' => 'required|array',
+            'competences.*' => 'exists:competences,id',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date',
+            'date_decision' => 'required|date',
+            'date_limite' => 'required|date',
+            'duree' => 'required|integer',
+            'nombre_participants' => 'required|integer',
+            'lieu_formation' => 'required|string|max:255',
+            'referentiel_id' => 'required|exists:referentiels,id',
+        ]);
+    
+        $cohorte = new Cohorte();
+        $cohorte->libelle = $request->libelle;
+        $cohorte->promo = $request->promo;
+        $cohorte->description = $request->description;
+        $cohorte->date_debut = $request->date_debut;
+        $cohorte->date_fin = $request->date_fin;
+        $cohorte->date_limite = $request->date_limite;
+        $cohorte->date_decision = $request->date_decision;
+        $cohorte->duree = $request->duree;
+        $cohorte->nombre_participants = $request->nombre_participants;
+        $cohorte->lieu_formation = $request->lieu_formation;
+        $cohorte->referentiel_id = $request->referentiel_id;
+        $cohorte->save();
+    
+        $cohorte->competences()->attach($request->competences);
+    
+        return redirect()->route('formations-personnel')->with('success', 'Cohorte créée avec succès.');
+
+    }
 }

@@ -94,33 +94,31 @@
                         <p>Type de référentiel : {{$cohorte->referentiel->type}}</p>
                         <p>{{ $cohorte->referentiel->libelle }} P{{ $cohorte->libelle }}</p>
                         <p>Début : {{$cohorte->date_debut}} / Fin : {{$cohorte->date_fin}}</p>
-                        <p>Durée :  @php
-                            // Assuming $cohorte->date_debut and $cohorte->date_fin are DateTime objects
-                $dateDebut = new DateTime($cohorte->date_debut);
-                $dateFin = new DateTime($cohorte->date_fin);
-                $interval = $dateDebut->diff($dateFin);
-                echo $interval->format('%a jours'); // Display the difference in days
-                        @endphp</p>
+                        <p>Durée :  {{ $cohorte->duree}} mois</p>
                         <p>Lieu : {{$cohorte->lieu_formation}}</p>
-                        <p>Bénificiaires : {{$cohorte->nombre_participants
-                            }} participants</p>
+                        <p>Date de limite de la candidature : {{ $cohorte->date_limite }}</p>
+                        <p>Bénificiaires : {{$cohorte->nombre_participants }} participants</p>
                             
                     </div>
                     
                 </div>
                 <div class="competences">
+                  <h1>Compétences techniques</h1>
                     <div class="techniques">
                         @foreach($cohorte->referentiel->competences as $competence)
+                        
                     @if ($competence->type == "techniques")
-                    <h1>Compétences {{ $competence->type }}</h1>
+                    
                     <li>{{ $competence->libelle }}</li>
                     @endif
                 @endforeach
                     </div>
                     <div class="transversales">
+                      <h1>Compétences transversales</h1>
                         @foreach($cohorte->referentiel->competences as $competence)
+                        
                         @if ($competence->type == "transversales")
-                        <h1>Compétences {{ $competence->type }}</h1>
+                        
                         <li>{{ $competence->libelle }}</li>
                         @endif
                     @endforeach

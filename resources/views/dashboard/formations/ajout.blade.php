@@ -95,7 +95,7 @@
             
                
             <div class="container mt-5">
-                <form action="#" method="POST">
+                <form action="{{ route('ajout-formation') }}" method="POST">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -129,6 +129,16 @@
                         <div class="form-group col-md-6">
                             <label for="date_fin" class="form-label">Date fin</label>
                             <input type="date" class="form-control" id="date_fin" name="date_fin" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="date_limite" class="form-label">Date limite des candidautres</label>
+                            <input type="date" class="form-control" id="date_limite" name="date_limite" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="date_decision" class="form-label">Date de finalisation des entretiens</label>
+                            <input type="date" class="form-control" id="date_decision" name="date_decision" required>
                         </div>
                     </div>
                     <div class="form-row">
