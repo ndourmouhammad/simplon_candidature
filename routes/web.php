@@ -11,10 +11,13 @@ Route::post('/traitement-connexion', [AuthController::class, 'traitement_connexi
 
 Route::post('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
 
+// Route::get('/index', [AuthController::class , 'index'])->name('auth.index');
 
 
+    // Route::get('/dashboard', [AuthController::class, 'Dashboard'])->name('user.dashboard');
+    // Route::get('/personnel/dashboard', [AuthController::class, 'Dashboard'])->name('personnel.dashboard');
+    // Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
 
-    Route::get('/dashboard', [AuthController::class, 'Dashboard'])->name('user.dashboard');
-    Route::get('/personnel/dashboard', [AuthController::class, 'Dashboard'])->name('personnel.dashboard');
-    Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
-
+    Route::get('/auth/index', function () {
+        return view('auth.index');
+    })->name('auth.index')->middleware('auth');

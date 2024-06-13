@@ -14,6 +14,8 @@
             align-items: center;
             min-height: 100vh; /* Minimum height pour couvrir l'écran */
             margin: 0;
+            overflow-y: hidden;
+            overflow-x: hidden;
         }
 
         .register-container {
@@ -74,7 +76,7 @@
         .form-column {
             flex: 1;
             display: flex;
-            flex-direction: column;
+            
             align-items: center;
             margin: 10px;
         }

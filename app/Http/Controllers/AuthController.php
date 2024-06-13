@@ -26,7 +26,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect()->intended('auth/index');
         }
 
         return redirect()->back()->withErrors([
@@ -76,6 +76,11 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/connexion');
+    }
+
+    public function Index()
+    {
+        return view('auth.index');
     }
 
     // Affiche le tableau de bord en fonction du rôle
