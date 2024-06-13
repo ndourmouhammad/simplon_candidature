@@ -50,14 +50,9 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <!-- Affichage des erreurs de validation -->
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="alert alert-danger">{{ $error }}</li>
-                    @endforeach
-                </ul>
+              
                 <!-- Formulaire de soumission de candidature -->
-                <form action="/ajouter/traitement" method="POST" class="form-group">
+                <form action="/ajouter/traitement" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="cohorte_id" class="form-label">ID Cohorte</label>
@@ -90,6 +85,15 @@
                         <label for="motivation" class="form-label">Motivation</label>
                         <textarea class="form-control @error('motivation') is-invalid @enderror" id="motivation" name="motivation" rows="4">{{ old('motivation') }}</textarea>
                         @error('motivation')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="cv_professionnel" class="form-label">Télécharger votre CV</label>
+                        <input type="file" class="form-control @error('cv_professionnel') is-invalid @enderror" id="cv_professionnel" name="cv_professionnel">
+                        @error('cv_professionnel')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
