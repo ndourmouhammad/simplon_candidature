@@ -6,24 +6,56 @@
     <title>App Laravel</title>
     <!-- Chargement de Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Ajout de styles personnalisés -->
+    <style>
+        .image-background {
+            background-color: #212529;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+        }
+        .image-background img {
+            max-width: 100%;
+            height: auto;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+        }
+    </style>
 </head>
 <body>
     <!-- Conteneur principal -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col s12">
-                <!-- Titre de la page -->
+            <!-- Section de l'image à gauche avec fond personnalisé -->
+            <div class="col-md-6 image-background">
+                <link rel="stylesheet" href="{{ asset('tableau/style.css') }}" />
+                <img src="{{ asset('img/couverture5.webp') }}" class="img-fluid" alt="...">
+
+                <img src="{{ asset('img/couverture5.webp') }}" alt="Image descriptive" class="img-fluid">
+            </div>
+
+            <!-- Section du formulaire à droite -->
+            <div class="col-md-6 form-container">
+                <!-- Titre de la page au-dessus du formulaire -->
                 <h1>Soumettre une candidature</h1>
-                <!-- Ligne de séparation -->
-                <hr>
+               
                 <!-- Affichage des messages de statut -->
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                 @endif
-              
-
+                <!-- Affichage des erreurs de validation -->
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="alert alert-danger">{{ $error }}</li>
+                    @endforeach
+                </ul>
                 <!-- Formulaire de soumission de candidature -->
                 <form action="/ajouter/traitement" method="POST" class="form-group">
                     @csrf
@@ -65,12 +97,9 @@
                     </div>
 
                     <!-- Boutons de soumission et de retour -->
-                    <br>
                     <button type="submit" class="btn btn-primary">Soumettre la candidature</button>
-                    <br>
                     <a href="/candidature" class="btn btn-danger">Retourner</a>
                 </form>
-
             </div>
         </div>
     </div>
