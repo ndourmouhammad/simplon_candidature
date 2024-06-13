@@ -21,14 +21,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('formations-personnel') }}" class="nav-link">
-                    <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
+                <a href="{{ route('formations-personnel') }}" class="nav-link active">
+                    <img src="{{ asset('img/school.svg') }}" alt="formation"> 
                     <span>Formations</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                <a href="{{ route('candidats') }}" class="nav-link">
+                    <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
               </li>
@@ -65,8 +65,8 @@
 
           </div>
           <div >
-            <div class="header">
-                <h1>Liste des candidats</h1>
+            <div class="header container">
+                <h1>Les détails de la formation</h1>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -77,42 +77,56 @@
                     <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
                 </div>
             </div>
-          
-
-          <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse email</th>
-                    <th>Formation postulée</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="candidatesTable">
-                @foreach ($candidats as $candidat)
-                <tr>
-                    <td>{{ $candidat->nom }}</td>
-                    <td>{{ $candidat->prenom }}</td>
-                    <td>{{ $candidat->email }}</td>
-                    <td>Adefnipa</td>
-                    
-                    <td class="action">
-
-                        <a href="{{ route('detail-candidat', $candidat->id) }}"><img src="{{ asset('img/view.svg') }}" alt=""></a>
-
-                        <a href="{{ route('supprimer-candidat', $candidat->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
-                    </td>
-                </tr>
-                @endforeach
+            
                
-            </tbody>
-        </table>    
-          
-          <div class="d-flex justify-content-center mt-4">
-            {{ $candidats->links() }}
-          </div>
-
+            <div class="container">
+                <div class="introduction">
+                    <h1>{{ $cohorte->referentiel->libelle }}</h1>
+                    <p>{{ $cohorte->referentiel->description }}</p>
+                </div>
+        
+                <div class="info">
+                    <div class="info-utiles">
+                        <h3>Date limite de candidature : <span class="date-limite">19 / 09/ 2024</span></h3>
+                        <hr>
+                        <p>Devenez compétents en quelques mois avec cette formation.</p>
+                        <div class="pratique">100% PRATIQUE</div>
+                        <p>Type de référentiel : {{$cohorte->referentiel->type}}</p>
+                        <p>{{ $cohorte->referentiel->libelle }} P{{ $cohorte->libelle }}</p>
+                        <p>Début : {{$cohorte->date_debut}} / Fin : {{$cohorte->date_fin}}</p>
+                        <p>Durée :  @php
+                            // Assuming $cohorte->date_debut and $cohorte->date_fin are DateTime objects
+                $dateDebut = new DateTime($cohorte->date_debut);
+                $dateFin = new DateTime($cohorte->date_fin);
+                $interval = $dateDebut->diff($dateFin);
+                echo $interval->format('%a jours'); // Display the difference in days
+                        @endphp</p>
+                        <p>Lieu : {{$cohorte->lieu_formation}}</p>
+                        <p>Bénificiaires : {{$cohorte->nombre_participants
+                            }} participants</p>
+                            
+                    </div>
+                    
+                </div>
+                <div class="competences">
+                    <div class="techniques">
+                        @foreach($cohorte->referentiel->competences as $competence)
+                    @if ($competence->type == "techniques")
+                    <h1>Compétences {{ $competence->type }}</h1>
+                    <li>{{ $competence->libelle }}</li>
+                    @endif
+                @endforeach
+                    </div>
+                    <div class="transversales">
+                        @foreach($cohorte->referentiel->competences as $competence)
+                        @if ($competence->type == "transversales")
+                        <h1>Compétences {{ $competence->type }}</h1>
+                        <li>{{ $competence->libelle }}</li>
+                        @endif
+                    @endforeach
+                    </div>
+                </div>
+            </div>
 
         </main>
       </div>
