@@ -3,6 +3,7 @@
 use App\Models\Referentiel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CohorteController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReferentielController;
 
 Route::get('/', [ReferentielController::class, 'accueil'])->name('accueil');
@@ -13,6 +14,9 @@ Route::post('/referentiels/sauvegarde', [ReferentielController::class, 'sauvegar
 Route::get('referentiels/modifier/{id}', [ReferentielController::class, 'modifier'])->name('modifier')->where('id', '[0-9]+');
 Route::post('referentiels/{id}/enregistrer', [ReferentielController::class, 'enregistrer'])->name('enregistrer');
 Route::get('referentiels/supprimer/{id}', [ReferentielController::class, 'supprimer'])->name('supprimer')->where('id', '[0-9]+');
+
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
+
 
 
 Route::get('/cohortes', [CohorteController::class, 'cohortes'])->name('cohortes');
