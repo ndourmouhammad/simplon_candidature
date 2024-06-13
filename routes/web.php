@@ -1,10 +1,15 @@
 <?php
 
+use App\Models\Referentiel;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CandidatureController;
-use App\Http\Controllers\CohorteController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CohorteController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\ReferentielController;
 
+
+Route::get('/', [ReferentielController::class, 'accueil'])->name('accueil');
 
 Route::get('/dashboard', [CandidatureController::class, 'dashboard'])->name('dashboard');
 
@@ -29,11 +34,17 @@ Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->n
 
 
 
+
 // Authentification
 Route::get('/inscription', [AuthController::class, 'Inscription'])->name('auth.inscription');
 Route::post('/traitement-inscription', [AuthController::class, 'traitement_inscription'])->name('auth.traitement.inscription');
 Route::get('/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
 Route::post('/traitement-connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
 Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
+
+
+Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
+
+
 
 

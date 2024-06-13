@@ -9,17 +9,24 @@ use Illuminate\Http\Request;
 
 class CohorteController extends Controller
 {
+
     //lister les formations pour candidats
+
+    
+
     public function listeFormations()
     {
         $cohortes = Cohorte::with(['referentiel.competences'])->get();
         $referentiels = Referentiel::with('competences')->get();
         $competences = Competence::all();
 
+
         return view('formations.formation', compact('cohortes', 'referentiels', 'competences'));
     }
 
-    // Détails formation pour candidats
+    
+
+
     public function detailFormation($id)
     {
         $cohorte = Cohorte::with(['referentiel.competences'])->findOrFail($id);
@@ -27,6 +34,7 @@ class CohorteController extends Controller
         $competences = Competence::all();
         return view('formations.detail', compact('cohorte', 'referentiels', 'competences'));
     }
+
 
     //lister les formations pour personnels
     public function formations()
@@ -59,3 +67,7 @@ class CohorteController extends Controller
         return view('dashboard.formations.ajout', compact('cohortes', 'referentiels', 'competences'));
     }
 }
+
+    
+
+
