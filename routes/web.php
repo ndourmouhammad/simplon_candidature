@@ -1,7 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CandidatureController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/dashboard', [CandidatureController::class, 'dashboard'])->name('dashboard');
+
