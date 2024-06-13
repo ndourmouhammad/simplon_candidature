@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CandidatureController extends Controller
 {
+
     //lister les candidats
 
     public function listeCandidats()
@@ -30,6 +31,13 @@ class CandidatureController extends Controller
         $candidat->delete();
 
         return redirect()->back()->with('success', 'Candidat supprimée avec succès');
+    }
+
+
+    //Méthode pour afficher la page d'accueil
+    public function dashboard()
+    {
+        return view('dashboards.dashboard');
     }
 
 }

@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\CohorteController;
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/dashboard', [CandidatureController::class, 'dashboard'])->name('dashboard');
+
 
 
 Route::get('/candidats', [CandidatureController::class, 'listeCandidats'])->name('candidats');
@@ -15,3 +15,4 @@ Route::get('/supprimer-candidat/{id}', [CandidatureController::class, 'supprimer
 
 Route::get('/formations', [CohorteController::class, 'listeFormations'])->name('formations');
 Route::get('/formations/{id}', [CohorteController::class, 'detailFormation'])->name('detail-formation')->where('id', '[0-9]+');
+
