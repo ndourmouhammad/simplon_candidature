@@ -201,13 +201,7 @@
                     <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <label for="cv_professionnel">cv_professionnel</label>
-                    <input type="text" id="cv_professionnel" name="cv_professionnel" placeholder="cv_professionnel" value="{{ old('cv_professionnel') }}">
-                    @error('cv_professionnel')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
+               
 
                 <button type="submit">Inscription</button>
             </form>

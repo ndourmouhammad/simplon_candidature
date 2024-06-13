@@ -18,21 +18,30 @@ class AuthController extends Controller
     // Gère la connexion
     public function traitement_connexion(Request $request)
     {
-        $request->validate([
+        // Valider les données du formulaire
+        $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|string|min:8',
         ]);
-
-        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
-        }
+            $request->session()->regenerate();
 
-        return redirect()->back()->withErrors([
-            'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
-            'password' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements. mdp',
-        ]);
+            // Vérifier le rôle de l'utilisateur
+            $user = Auth::user();
+            if ($user->role === 'personnel') {
+                // Rediriger l'administrateur vers le tableau de bord administrateur
+                return redirect()->intended('/dashboard');
+            } else {
+                // Rediriger l'utilisateur vers la page d'accueil
+                return redirect()->intended('/');
+            }
+        }
+        // Authentification échouée, rediriger avec une erreur
+        return back()->withErrors([
+            'email' => 'Email invalide !',
+            'password' => 'mot de passe incorrect !',
+        ])->onlyInput('email');
     }
 
     // Affiche le formulaire d'inscription
@@ -53,7 +62,7 @@ class AuthController extends Controller
             'telephone' => '|string|max:20|unique:users',
             'date_naissance' => 'required|date',
             'adresse' => '|string|max:255',
-            'cv_professionnel'=>'required',
+            
         ]);
 
         User::create([
@@ -65,10 +74,10 @@ class AuthController extends Controller
             'date_naissance' => $request->date_naissance,
             'adresse' => $request->adresse,
             'role' => 'candidat',
-            'cv_professionnel'=>$request->cv_professionnel
+            
         ]);
 
-        return redirect(route('auth.connexion'))->with('success', 'Inscription réussie');
+        return redirect(route('login'))->with('success', 'Inscription réussie');
     }
 
     // Gère la déconnexion
