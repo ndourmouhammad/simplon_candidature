@@ -43,16 +43,15 @@ class CandidatureController extends Controller
 
 
      // Méthode pour afficher la detail des candidatures
-     public function affiche($id)
-     {
-         // Récupérer tous les candidatures de la base de données
-         $candidature = Candidature::with('user')->findOrFail($id);
+    
+    public function affiche($id)
+    {
+        // Récupérer la candidature depuis la base de données
+        $candidature = Candidature::findOrFail($id);
 
- 
-         // Retourner la vue 'candidatures.detail' avec les candidatures récupérés
-         return view('candidatures.detail',compact('candidature'));
-     }
-
+        // Retourner la vue 'candidatures.detail' avec les détails de la candidature
+        return view('candidatures.detail', compact('candidature'));
+    }
      // Méthode pour afficher le formulaire d'ajout d'un nouvel candidature
     public function ajouter_candidature()
     {
@@ -64,30 +63,33 @@ class CandidatureController extends Controller
     // Méthode pour traiter la soumission du formulaire d'ajout d'une nouvelle candidature
     public function ajouter_candidature_traitement(Request $request)
     {
-        // Validation des données
+        // Validation des données du formulaire
         $request->validate([
             'biographie' => 'required|string',
             'motivation' => 'required|string',
-            'user_id' => 'required|integer', // Assurez-vous de valider user_id si nécessaire
-            'cohorte_id' => 'required|integer', // Assurez-vous de valider cohorte_id si nécessaire
+            'user_id' => 'required|integer|exists:users,id',
+            'cohorte_id' => 'required|integer|exists:cohortes,id',
+            'cv_professionnel' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
-
-        // Créer une nouvelle instance de Candidature
+    
+        // Gestion du fichier CV professionnel
+        $cv_professionnel_path = $request->file('cv_professionnel')->store('cvs', 'public'); // Stocke le fichier dans le dossier 'storage/app/public/cvs'
+    
+        // Création d'une nouvelle instance de Candidature
         $candidature = new Candidature();
-
-        // Assigner les valeurs du formulaire aux attributs de Candidature
+    
+        // Attribution des valeurs du formulaire aux attributs de Candidature
         $candidature->biographie = $request->biographie;
         $candidature->motivation = $request->motivation;
-        $candidature->user_id = $request->user_id; // Assigner user_id depuis le formulaire
-        $candidature->cohorte_id = $request->cohorte_id; // Assigner cohorte_id depuis le formulaire
-
-        // Sauvegarder la candidature dans la base de données
-        $candidature->save();
-
-        // Rediriger vers la detail des candidatures avec un message de succès
-        return redirect()->route('detail_candidature')->with('status', 'La candidature a bien été ajoutée avec succès.');
+        $candidature->user_id = $request->user_id;
+        $candidature->cohorte_id = $request->cohorte_id;
+        $candidature->cv_professionnel = $cv_professionnel_path; // Assignation du chemin du fichier CV
     
+        // Sauvegarde de la candidature dans la base de données
+        $candidature->save();
+    
+        // Redirection vers la vue détaillée de la candidature avec un message de succès
+        return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'La candidature a bien été ajoutée avec succès.');
+    }
+    }
 
-}
-
-}
