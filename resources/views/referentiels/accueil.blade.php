@@ -86,7 +86,7 @@
               @foreach ($referentiels as $referentiel)
               <div class="col-md-4">
                   <div class="card mb-4">
-                      <img src="img/fluent-window-dev-edit-16-regular.svg" class="card-img-top" alt="...">
+                      <img src="{{ asset('img/dev.svg') }}" class="card-img-top" alt="...">
                       <div class="card-body">
                           <h5 class="card-title">{{ $referentiel->libelle }}</h5>
                           <p class="card-text">{{ $referentiel->description }}</p>
