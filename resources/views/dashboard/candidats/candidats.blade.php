@@ -21,10 +21,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
-                    <span>Formations</span>
-                </a>
+                <a href="{{ route('formations-personnel') }}" class="nav-link ">
+                  <img src="{{ asset('img/black.svg') }}" alt="formation"> 
+                  <span>Formations</span>
+              </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link active">
@@ -34,8 +34,10 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <img src="{{ asset('img/groups-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="candidature"> 
+                  <a href="#" class="nav-link">
+                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
                     <span>Candidatures</span>
+                </a>
                 </a>
               </li>
               <li class="nav-item">

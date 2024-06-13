@@ -168,26 +168,26 @@
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
+                <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <img src="{{ asset('img/dashboard.svg') }}" alt="tableau"> 
                     <span>Tableau de bord</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
+                <a href="{{ route('formations-personnel') }}" class="nav-link ">
+                    <img src="{{ asset('img/black.svg') }}" alt="formation"> 
                     <span>Formations</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('candidats') }}" class="nav-link ">
-                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                <a href="{{ route('candidats') }}" class="nav-link">
+                    <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <img src="{{ asset('img/groups-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="candidature"> 
+                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
                     <span>Candidatures</span>
                 </a>
               </li>
