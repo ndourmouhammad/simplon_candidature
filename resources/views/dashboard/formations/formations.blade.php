@@ -21,14 +21,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('formations-personnel') }}" class="nav-link">
-                    <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
+                <a href="#" class="nav-link active">
+                    <img src="{{ asset('img/school.svg') }}" alt="formation"> 
                     <span>Formations</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('candidats') }}" class="nav-link active">
-                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                <a href="{{ route('candidats') }}" class="nav-link">
+                    <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
               </li>
@@ -65,29 +65,48 @@
 
           </div>
           <div >
-             
-            <div class="container mt-5">
-                <div class="profile-info">
-                    <h4 class="candidate-name">{{ $candidat->prenom }} {{ $candidat->nom }}</h4>
-                    <p class="formation">Formation postuleé : Adefnipa</p>
-                </div>
-                <div class="contact-icons mb-4">
-                    <a href="#"><img src="{{ asset('img/icon.svg') }}" alt="" class="mr-2 ">{{ $candidat->adresse }}</a>
-                    <a href="#"><img src="{{ asset('img/Phone.svg') }}" alt="" class="mr-2">{{ $candidat->telephone }}</a>
-                    <a href="#"><img src="{{ asset('img/Mail.svg') }}" alt="" class="mr-2">{{ $candidat->email }}</a>
-                </div>
-                <div class="biographie">
-                    <h4>Biographie</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="description">
-                    <h4>Description</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="pdf-link">
-                    <a href="path/to/cv.pdf" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
+            <div class="header">
+                <h1>Les formations</h1>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <div class="form-inline">
+                    <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
+                    <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
                 </div>
             </div>
+            <div class="add mb-5">
+                <a href="{{ route('ajoutFormationForm') }}"><img src="{{ asset('img/add.svg') }}" alt="">Ajouter une formation</a>
+            </div>
+          
+
+            
+            <div class="mb-5">
+            
+            
+                <div class="row">
+                    @foreach($cohortes as $cohorte)
+                    <!-- Cards go here -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"> <h3><a href="{{route('detail-formation-personnel', $cohorte->id)}}">{{ $cohorte->referentiel->libelle }} P#{{ $cohorte->libelle }}</a></h3></h5>
+                                <p class="card-text"><p>{{ $cohorte->description }}</p>
+                                
+                                <button class="btn btn-danger text-white">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                
+            </div>
+          {{-- <div class="d-flex justify-content-center mt-4">
+            {{ $candidats->links() }}
+          </div> --}}
+
 
         </main>
       </div>
