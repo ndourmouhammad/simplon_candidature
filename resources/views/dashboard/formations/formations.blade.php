@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+      .card-equal-height {
+        height: 100%;
+        width: 20rem;
+    }
+
+    .card-text p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -83,29 +97,37 @@
           
 
             
-            <div class="mb-5">
-            
-            
-                <div class="row">
-                    @foreach($cohortes as $cohorte)
-                    <!-- Cards go here -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"> <h3><a href="{{route('detail-formation-personnel', $cohorte->id)}}">{{ $cohorte->referentiel->libelle }} P#{{ $cohorte->libelle }}</a></h3></h5>
-                                <p class="card-text"><p>{{ $cohorte->description }}</p>
-                                
-                                <button class="btn btn-danger text-white">Supprimer</button>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                
-            </div>
-          {{-- <div class="d-flex justify-content-center mt-4">
-            {{ $candidats->links() }}
-          </div> --}}
+            <div class="ref mb-5">
+              <div class="row">
+                  @foreach($cohortes as $cohorte)
+                  <div class="col-md-3 mb-4">
+                      <div class="card card-equal-height">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">
+                                  <h3>
+                                      <a href="{{ route('detail-formation-personnel', $cohorte->id) }}">
+                                          {{ $cohorte->referentiel->libelle }} P#{{ $cohorte->promo }}
+                                      </a>
+                                  </h3>
+                              </h5>
+                              <p class="card-text">
+                                  <p>{{ Str::limit($cohorte->description, 100) }}</p> <!-- Limite à 100 caractères -->
+                              </p>
+                              <div class="mt-auto d-flex justify-content-between">
+                                  <a href="{{ route('supprimer-formation', $cohorte->id) }}">
+                                      <button class="btn btn-danger text-white">Supprimer</button>
+                                  </a>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  @endforeach
+                  
+              </div>
+              
+          </div>
+          
 
 
         </main>

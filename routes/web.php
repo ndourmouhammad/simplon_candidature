@@ -30,6 +30,10 @@ Route::get('/formations-personnel', [CohorteController::class, 'formations'])->n
 Route::get('/formations-personnel/{id}', [CohorteController::class, 'detailFormationPersonnel'])->name('detail-formation-personnel')->where('id', '[0-9]+');
 Route::get('/form-ajout-formation', [CohorteController::class, 'ajoutFormationForm'])->name('ajoutFormationForm');
 Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->name('ajout-formation');
+Route::get('/form-modifier-formation/{id}', [CohorteController::class, 'modifierFormationForm'])->name('modifierFormationForm');
+Route::post('/modifier-formation/{id}', [CohorteController::class, 'modifierFormation'])->name('modifier-formation');
+Route::get('/supprimer-formation/{id}', [CohorteController::class, 'supprimerFormation'])->name('supprimer-formation');
+
 
 
 

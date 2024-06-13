@@ -6,6 +6,87 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+      body {
+    background-color: #F0F0F0;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+.introduction h1 {
+    color: #CE0033;
+    font-size: 42px;
+    font-style: bold;
+}
+.introduction .cohorte{
+  color: #CE0033;
+  font-size: 14px;
+}
+
+.introduction p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-top: 20px;
+}
+
+.competences-visees {
+  font-size: 20px;
+  font-style: bold;
+}
+
+.info-utiles h3 {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+
+
+.competences h1 {
+    font-size: 20px;
+    margin-top: 40px;
+    
+}
+
+.competences ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.competences ul li {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.update-button {
+    margin-top: 40px;
+   
+}
+
+.update-button button {
+    background-color: #ffa500;
+    color: #000;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px
+}
+
+.update-button button:hover {
+    background-color: #ff4c4c;
+    color: #fff;
+}
+
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -21,7 +102,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('formations-personnel') }}" class="nav-link active">
                     <img src="{{ asset('img/school.svg') }}" alt="formation"> 
                     <span>Formations</span>
                 </a>
@@ -80,53 +161,52 @@
             
                
             <div class="container">
-                <div class="introduction">
-                    <h1>{{ $cohorte->referentiel->libelle }}</h1>
-                    <p>{{ $cohorte->referentiel->description }}</p>
-                </div>
-        
-                <div class="info">
-                    <div class="info-utiles">
-                        <h3>Date limite de candidature : <span class="date-limite">19 / 09/ 2024</span></h3>
-                        <hr>
-                        <p>Devenez compétents en quelques mois avec cette formation.</p>
-                        <div class="pratique">100% PRATIQUE</div>
-                        <p>Type de référentiel : {{$cohorte->referentiel->type}}</p>
-                        <p>{{ $cohorte->referentiel->libelle }} P{{ $cohorte->libelle }}</p>
-                        <p>Début : {{$cohorte->date_debut}} / Fin : {{$cohorte->date_fin}}</p>
-                        <p>Durée :  @php
-                            // Assuming $cohorte->date_debut and $cohorte->date_fin are DateTime objects
-                $dateDebut = new DateTime($cohorte->date_debut);
-                $dateFin = new DateTime($cohorte->date_fin);
-                $interval = $dateDebut->diff($dateFin);
-                echo $interval->format('%a jours'); // Display the difference in days
-                        @endphp</p>
-                        <p>Lieu : {{$cohorte->lieu_formation}}</p>
-                        <p>Bénificiaires : {{$cohorte->nombre_participants
-                            }} participants</p>
-                            
-                    </div>
-                    
-                </div>
-                <div class="competences">
-                    <div class="techniques">
-                        @foreach($cohorte->referentiel->competences as $competence)
-                    @if ($competence->type == "techniques")
-                    <h1>Compétences {{ $competence->type }}</h1>
-                    <li>{{ $competence->libelle }}</li>
-                    @endif
-                @endforeach
-                    </div>
-                    <div class="transversales">
-                        @foreach($cohorte->referentiel->competences as $competence)
-                        @if ($competence->type == "transversales")
-                        <h1>Compétences {{ $competence->type }}</h1>
+              <div class="introduction">
+                  <h1>{{ $cohorte->referentiel->libelle }} </h1>
+                  <p class="cohorte">Cohorte {{ $cohorte->promo }}</p>
+                  <p class="desc">{{ $cohorte->referentiel->description }}</p>
+              </div>
+              
+              <div class="competences">
+                <h1>Compétences visées</h1>
+                <ul>
+                    @foreach($cohorte->referentiel->competences as $competence)
                         <li>{{ $competence->libelle }}</li>
-                        @endif
                     @endforeach
-                    </div>
-                </div>
+                </ul>
             </div>
+
+              <div class="competences">
+                <h1 >Les dates utiles</h1>
+                  <div class="competences">
+                    <ul>
+                      <li>Date début de la formation : <span class="competences">{{ $cohorte->date_debut }}</span></li>
+                      <li>Date fin de la formation (prévue) : <span class="competences">{{ $cohorte->date_fin }}</span></li>
+                      <li>Date limite de l'appel à candidature : <span class="competences">{{ $cohorte->date_limite }} </span></li>
+                      <li>Date de finalisation des entretiens : <span class="competences">{{ $cohorte->date_decision }}</span></li>
+                      <li>Durée de la formation : <span class="competences">{{ $cohorte->duree }} mois</span></h3>
+                      
+                      </ul>
+                      
+                  </div>
+              </div>
+
+              <div class="competences">
+                <ul>
+                  <li>Lieu de la formation : <span class="date-limite">{{ $cohorte->lieu_formation }}</span></li>
+                  <li>Nombre de participants : <span class="date-limite">{{ $cohorte->nombre_participants }} participants</span></li>
+                  <li>Type de formation : <span class="date-limite">formation métier</span></li>
+                </ul>
+            </div>
+
+              
+             
+      
+              <div class="update-button">
+                  <a href="{{ route('modifierFormationForm', $cohorte->id) }}"><button>Mettre à jour la formation</button></a>
+              </div>
+              
+          </div>
 
         </main>
       </div>
