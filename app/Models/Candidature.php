@@ -12,7 +12,7 @@ class Candidature extends Model
     protected $fillable = [
         'biographie',
         'motivation',
-        'staut',
+        'statut',
         'date_decision',
         'date_limit',
         'user_id',
