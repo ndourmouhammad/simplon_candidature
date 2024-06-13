@@ -1,0 +1,229 @@
+/* globals.css */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.navbar .image {
+  height: 2.5rem;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* styleguide.css */
+.text-wrapper {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.text-wrapper-2, .text-wrapper-3, .text-wrapper-4 {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.text-wrapper-5 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.le-lorem-ipsum-est {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.bouton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.text-wrapper-6 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+.forpa {
+background-color: rgba(241, 245, 248, 1);
+width: 100%;
+}
+.paragraphe {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.text-wrapper-7 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.text-wrapper-8, .text-wrapper-10 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.text-wrapper-9, .text-wrapper-11, .text-wrapper-12 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.text-wrapper-13, .text-wrapper-14, .text-wrapper-15 {
+  font-size: 1rem;
+}
+
+.text-wrapper-16 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+
+
+.text-wrapper-17 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.voir-plus {
+  font-size: 1rem;
+  text-align: right;
+  display: block;
+  margin-top: 1rem;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.text-wrapper-19 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.text-wrapper-20 {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.frame-18 .bouton-3 {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.frame-18 .bouton-3:hover {
+  background-color: #0056b3;
+}
+
+.text-wrapper-21 {
+  font-size: 1rem;
+}
+
+/* acceuil.css */
+.accueil .container-fluid {
+  padding: 0;
+}
+
+.accueil .navbar {
+  padding: 1rem;
+}
+
+.accueil .img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.accueil .container {
+  padding: 2rem 0;
+}
+
+.accueil .card {
+  margin-bottom: 1rem;
+}
+
+.accueil .card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.accueil .form-group label {
+  font-weight: bold;
+}
+
+.accueil .form-group input, .accueil .form-group textarea {
+  font-size: 1rem;
+}
+
+.accueil .form-group button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.accueil .form-group button:hover {
+  background-color: #0056b3;
+}
+
+.accueil .d-flex span {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.accueil .d-flex img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+
+  :root {
+    --background: rgba(240, 240, 240, 1);
+    --primary-color: rgba(206, 0, 51, 1);
+    --white: rgba(255, 255, 255, 1);
+    --black: rgba(33, 37, 41, 1);
+    --gray: rgba(179, 179, 179, 1);
+    --blue-background: rgba(241, 245, 248, 1);
+    --text-color: rgba(33, 37, 41, 1);
+    --titre-font-family: "Nunito Sans", sans-serif;
+    --titre-font-weight: 400;
+    --titre-font-size: 1.5em;
+    --titre-letter-spacing: 0px;
+    --titre-line-height: normal;
+    --titre-font-style: normal;
+    --texte-font-family: "Nunito Sans", sans-serif;
+    --texte-font-weight: 400;
+    --texte-font-size: 0.875em;
+    --texte-letter-spacing: 0px;
+    --texte-line-height: 30px;
+    --texte-font-style: normal;
+    --titre-2-font-family: ;
+    --titre-2-font-weight: 400;
+    --titre-2-font-size: 20px;
+    --titre-2-letter-spacing: 0px;
+    --titre-2-line-height: normal;
+    --titre-2-font-style: normal;
+    --choix-font-family: "Nunito Sans", sans-serif;
+    --choix-font-weight: 400;
+    --choix-font-size: 1em;
+    --choix-letter-spacing: 0px;
+    --choix-line-height: 24px;
+    --choix-font-style: normal;
+    --titre-qccueil-font-family: "Inter", sans-serif;
+    --titre-qccueil-font-weight: 400;
+    --titre-qccueil-font-size: 42px;
+    --titre-qccueil-letter-spacing: 0px;
+    --titre-qccueil-line-height: normal;
+    --titre-qccueil-font-style: normal;
+  }
