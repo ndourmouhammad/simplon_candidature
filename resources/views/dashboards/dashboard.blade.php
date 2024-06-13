@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Plateforme de gestion des candidatures de Simplon SENEGAL</title>
     <link rel="stylesheet" href="{{ asset('tableau/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
@@ -167,33 +168,33 @@
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                  <span>Tableau de bord</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
-                  <span>Formations</span>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="#" class="nav-link active">
-                  <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
-                  <span>Candidats</span>
+                    <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
+                    <span>Tableau de bord</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img src="{{ asset('img/groups-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="candidature"> 
-                  <span>Candidatures</span>
+                    <img src="{{ asset('img/school-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="formation"> 
+                    <span>Formations</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('candidats') }}" class="nav-link ">
+                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                    <span>Candidats</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
-                  <span>Déconnexion</span>
+                    <img src="{{ asset('img/groups-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="candidature"> 
+                    <span>Candidatures</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
+                    <span>Déconnexion</span>
                 </a>
               </li>
             </ul>
