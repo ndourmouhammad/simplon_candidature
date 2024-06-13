@@ -99,9 +99,9 @@
                     
                     <td class="action">
 
-                        <a href="{{ route('detail-candidat', $candidat->id) }}"><img src="img/view.svg" alt=""></a>
+                        <a href="{{ route('detail-candidat', $candidat->id) }}"><img src="{{ asset('img/view.svg') }}" alt=""></a>
 
-                        <a href="{{ route('supprimer-candidat', $candidat->id) }}"><img src="img/trashh.svg" alt=""></a>
+                        <a href="{{ route('supprimer-candidat', $candidat->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
                     </td>
                 </tr>
                 @endforeach
