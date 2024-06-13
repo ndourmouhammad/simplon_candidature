@@ -95,68 +95,111 @@
             
                
             <div class="container mt-5">
-                <form action="#" method="POST">
+                <form action="{{ route('ajout-formation') }}" method="POST">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="libelle" class="form-label">Libelle de la formation</label>
-                            <input type="text" class="form-control" id="libelle" name="libelle" placeholder="le nom de la formation" required>
+                            <input type="text" class="form-control" id="libelle" name="libelle" placeholder="le nom de la formation" value="{{ old('libelle') }}">
+                            @error('libelle')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="promo" class="form-label">La promo</label>
-                            <input type="number" class="form-control" id="promo" name="promo" placeholder="la promotion" required>
+                            <input type="number" class="form-control" id="promo" name="promo" placeholder="la promotion" value="{{ old('promo') }}">
+                            @error('promo')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="description" class="form-label">La présentation</label>
-                            <textarea class="form-control" id="description" name="description" placeholder="présentation de la formation" required></textarea>
+                            <textarea class="form-control" id="description" name="description" placeholder="présentation de la formation" >{{ old('description') }}</textarea>
+                            @error('description')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="competences">Compétences</label>
-                    <select name="competences[]" id="competences" class="form-control select2" multiple="multiple" required>
+                    <select name="competences[]" id="competences" class="form-control select2" multiple="multiple" >
                         @foreach($competences as $competence)
                         <option value="{{ $competence->id }}">{{ $competence->libelle }}</option>
                         @endforeach
                     </select>
+                    @error('libelle')
+                    <div class="error text-danger">{{ $message }}</div>
+                @enderror
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="date_debut" class="form-label">Date début</label>
-                            <input type="date" class="form-control" id="date_debut" name="date_debut" required>
+                            <input type="date" class="form-control" id="date_debut" name="date_debut" value="{{ old('date_debut') }}">
+                            @error('date_debut')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="date_fin" class="form-label">Date fin</label>
-                            <input type="date" class="form-control" id="date_fin" name="date_fin" required>
+                            <input type="date" class="form-control" id="date_fin" name="date_fin" value="{{ old('date_fin') }}">
+                            @error('date_fin')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="date_limite" class="form-label">Date limite des candidautres</label>
+                            <input type="date" class="form-control" id="date_limite" name="date_limite" value="{{ old('date_limite') }}">
+                            @error('date_limite')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="date_decision" class="form-label">Date de finalisation des entretiens</label>
+                            <input type="date" class="form-control" id="date_decision" name="date_decision"  value="{{ old('date_decision') }}">
+                            @error('date_decision')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="duree" class="form-label">Durée de la formation</label>
-                            <input type="number" class="form-control" id="duree" name="duree" placeholder="durée de la formation" required>
+                            <input type="number" class="form-control" id="duree" name="duree" placeholder="durée de la formation" value="{{ old('duree') }}">
+                            @error('duree')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="nombre_participants" class="form-label">Nombre de participants</label>
-                            <input type="number" class="form-control" id="nombre_participants" name="nombre_participants" placeholder="nombre de participants" required>
+                            <input type="number" class="form-control" id="nombre_participants" name="nombre_participants" placeholder="nombre de participants" value="{{ old('nombre_participants') }}">
+                            @error('nombre_participants')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="lieu_formation" class="form-label">Lieu de la formation</label>
-                            <input type="text" class="form-control" id="lieu_formation" name="lieu_formation" placeholder="lieu de la formation" required>
+                            <input type="text" class="form-control" id="lieu_formation" name="lieu_formation" placeholder="lieu de la formation" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="referentiel_id">Référentiel</label>
-                            <select name="referentiel_id" id="referentiel_id" class="form-control" required>
+                            <select name="referentiel_id" id="referentiel_id" class="form-control">
                                 @foreach($referentiels as $referentiel)
                                 <option value="{{ $referentiel->id }}">{{ $referentiel->libelle }}</option>
                                 @endforeach
                             </select>
+                            @error('libelle')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
-                </form>
+                </form>   
             </div>
         
             <!-- jQuery and Select2 JS -->
