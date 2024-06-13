@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\CohorteController;
+use App\Http\Controllers\AuthController;
 
 
 Route::get('/dashboard', [CandidatureController::class, 'dashboard'])->name('dashboard');
@@ -24,4 +25,15 @@ Route::get('/formations-personnel', [CohorteController::class, 'formations'])->n
 Route::get('/formations-personnel/{id}', [CohorteController::class, 'detailFormationPersonnel'])->name('detail-formation-personnel')->where('id', '[0-9]+');
 Route::get('/form-ajout-formation', [CohorteController::class, 'ajoutFormationForm'])->name('ajoutFormationForm');
 Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->name('ajout-formation');
+
+
+
+
+// Authentification
+Route::get('/inscription', [AuthController::class, 'Inscription'])->name('auth.inscription');
+Route::post('/traitement-inscription', [AuthController::class, 'traitement_inscription'])->name('auth.traitement.inscription');
+Route::get('/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
+Route::post('/traitement-connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
+Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
+
 
