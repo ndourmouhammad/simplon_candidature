@@ -13,9 +13,8 @@ class Candidature extends Model
     protected $fillable = [
         'biographie',
         'motivation',
-        'staut',
-        'date_decision',
-        'date_limit',
+        'statut',
+        'cv_path',
         'user_id',
         'cohorte_id'
     ];
@@ -42,5 +41,13 @@ class Candidature extends Model
     public function notification()
     {
         return $this->belongsTo(Notification::class);
+    }
+    public function getCvPathAttribute()
+    {
+        if ($this->cv_professionnel) {
+            return asset('storage/' . $this->cv_professionnel);
+        }
+
+        return null;
     }
 }
