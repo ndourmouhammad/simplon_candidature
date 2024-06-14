@@ -69,8 +69,15 @@
         form {
             width: 100%;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-columns {
+            width: 100%;
+            display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .form-column {
@@ -79,7 +86,7 @@
             flex-direction: column;
             align-items: center;
             margin: 20px;
-            justify-content: space-between
+            justify-content: space-between;
         }
 
         .form-group {
@@ -100,6 +107,7 @@
             margin-bottom: 10px;
             color: #000;
         }
+
         .button-container {
             width: 600px;
             display: flex;
@@ -118,7 +126,8 @@
             width: 100%; /* Bouton en pleine largeur */
             max-width: 600px;
         }
-        .btn-envoyer{
+
+        .btn-envoyer {
             width: 550px;
             margin-left: 20px;
             justify-content: center;
@@ -144,80 +153,69 @@
         </div>
         <div class="register-form">
             <img src="https://tse4.mm.bing.net/th?id=OIP.4v3p4mP-yyOEapEKb-t7AAHaHT&pid=Api&P=0&h=180" alt="Logo" class="logo">
-            <h2>Inscrivez-vous pour rejoindre la communauté simplon   </h2>
+            <h2>Inscrivez-vous pour rejoindre la communauté Simplon</h2>
             <form action="{{ route('auth.traitement_inscription') }}" method="POST">
                 @csrf
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{ old('prenom') }}">
-                        @error('prenom')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
+                <div class="form-columns">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{ old('prenom') }}">
+                            @error('prenom')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="text" id="telephone" name="telephone" placeholder="Téléphone" value="{{ old('telephone') }}">
+                            @error('telephone')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                            @error('email')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom" placeholder="Nom" value="{{ old('nom') }}">
-                        @error('nom')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="date_naissance">Date de naissance</label>
+                            <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" value="{{ old('date_naissance') }}">
+                            @error('date_naissance')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" placeholder="Nom" value="{{ old('nom') }}">
+                            @error('nom')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de Passe</label>
+                            <input type="password" id="password" name="password" placeholder="Mot de Passe">
+                            @error('password')
+                            <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                        @error('email')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Mot de Passe</label>
-                        <input type="password" id="password" name="password" placeholder="Mot de Passe">
-                        @error('password')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    
                 </div>
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="telephone">Téléphone</label>
-                        <input type="text" id="telephone" name="telephone" placeholder="Téléphone" value="{{ old('telephone') }}">
-                        @error('telephone')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="date_naissance">Date de naissance</label>
-                        <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" value="{{ old('date_naissance') }}">
-                        @error('date_naissance')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="adresse">Adresse</label>
-                        <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="{{ old('adresse') }}">
-                        @error('adresse')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cv_professionnel">CV Professionnel</label>
-                        <input type="text" id="cv_professionnel" name="cv_professionnel" placeholder="CV Professionnel" value="{{ old('cv_professionnel') }}">
-                        @error('cv_professionnel')
-                        <span class="error">{{ $message }}</span>
-                        @enderror
-                    </div>
+                <div class="form-column" style="width: 93%; margin-top: -1rem">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="{{ old('adresse') }}">
+                    @error('adresse')
+                    <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
-
+                <div class="button-container">
+                    <button type="submit">Inscription</button>
+                </div>
             </form>
-            <div class="container">
-                <button class="btn-envoyer" type="submit">Inscription</button>
-            </div>
         </div>
     </div>
 </body>
