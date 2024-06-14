@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .sidebar .nav-link.active {
@@ -43,6 +44,7 @@ body {
 .table thead th {
   background-color: #c3002f;
   color: white;
+  
 }
 
 .titre h5 {
@@ -122,3 +124,9 @@ nav {
   display: flex;
   gap: 2rem;
 } */
+
+.btn-group {
+  display: flex;
+  flex-direction: column
+}
+

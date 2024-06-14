@@ -59,10 +59,11 @@
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
-                <div class="btn-group">
-                    <span class="badge badge-secondary">Chef de projet</span>
-                    <span class="font-weight-bold">Wahab Diallo</span>
-                </div>
+              <div class="btn-group">
+                
+                <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                <span>{{ Auth::user()->role }}</span>
+            </div>
             </div>
 
           </div>

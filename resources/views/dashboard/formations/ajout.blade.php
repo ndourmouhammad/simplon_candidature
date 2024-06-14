@@ -22,6 +22,29 @@
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             border: 1px solid #007bff !important;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+.container h1 {
+    font-size: 42px;
+    font-weight: 900
+}
+label {
+    font-size: 20px;
+    font-weight: 500
+}
+input{
+    border: #000 1px solid;
+    border-radius: 10px;
+}
+.info-utiles button {
+    width: 30%;
+  }
+  form-row {
+    display: flex;
+    justify-content: space-between
+  }
     </style>
 
   </head>
@@ -76,8 +99,11 @@
             </div>
             <div class="col-md-4 text-md-right">
                 <div class="btn-group">
-                    <span class="badge badge-secondary">Chef de projet</span>
-                    <span class="font-weight-bold">Wahab Diallo</span>
+                    
+                
+                        <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                        <span>{{ Auth::user()->role }}</span>
+                    
                 </div>
             </div>
 
@@ -94,7 +120,7 @@
             </div>
             
                
-            <div class="container mt-5">
+            <div class="container mt-2">
                 <form action="{{ route('ajout-formation') }}" method="POST">
                     @csrf
                     <div class="form-row">
@@ -116,22 +142,26 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="description" class="form-label">La présentation</label>
-                            <textarea class="form-control" id="description" name="description" placeholder="présentation de la formation" >{{ old('description') }}</textarea>
+                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="présentation de la formation" >{{ old('description') }}</textarea>
                             @error('description')
                             <div class="error text-danger">{{ $message }}</div>
                         @enderror
                         </div>
                         <div class="form-group col-md-6">
                             <label for="competences">Compétences</label>
-                    <select name="competences[]" id="competences" class="form-control select2" multiple="multiple" >
-                        @foreach($competences as $competence)
-                        <option value="{{ $competence->id }}">{{ $competence->libelle }}</option>
-                        @endforeach
-                    </select>
-                    @error('libelle')
-                    <div class="error text-danger">{{ $message }}</div>
-                @enderror
+                            @foreach($competences as $competence)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="competence{{ $competence->id }}" name="competences[]" value="{{ $competence->id }}">
+                                <label class="form-check-label" for="competence{{ $competence->id }}">
+                                    {{ $competence->libelle }}
+                                </label>
+                            </div>
+                            @endforeach
+                            @error('competences')
+                            <div class="error text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -198,7 +228,8 @@
                         @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    
+                    <button type="submit"  class="btn btn-dark text-white py-2" style="width: 18%">Envoyer</button>
                 </form>   
             </div>
         
@@ -207,12 +238,22 @@
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
             <script>
                 $(document).ready(function() {
+                    // Initialisation de Select2 pour d'autres champs si nécessaire
                     $('.select2').select2({
                         placeholder: "Sélectionnez des compétences",
                         allowClear: true
                     });
+            
+                    // Désactiver Select2 pour le champ des compétences
+                    $('#competences').select2('destroy');
+            
+                    // Option pour effacer les compétences sélectionnées
+                    $('.select2-selection__clear').on('click', function() {
+                        $('#competences').val(null).trigger('change');
+                    });
                 });
             </script>
+            
         
 
         </main>

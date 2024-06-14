@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+      .btn-group {
+        display: flex;
+        flex-direction: column
+      }
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -59,10 +65,11 @@
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
-                <div class="btn-group">
-                    <span class="badge badge-secondary">Chef de projet</span>
-                    <span class="font-weight-bold">Wahab Diallo</span>
-                </div>
+              <div class="btn-group">
+                
+                <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                <span>{{ Auth::user()->role }}</span>
+            </div>
             </div>
 
           </div>
