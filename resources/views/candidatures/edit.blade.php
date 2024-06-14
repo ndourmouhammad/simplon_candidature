@@ -238,7 +238,7 @@ nav {
         <h1>Validation de la candidature</h1>
         <div class="profile-info">
             <h4 class="candidate-name">{{ $candidature->user->prenom }} {{ $candidature->user->nom }}</h4>
-            <p class="formation">Formation postuleé : Adefnipa</p>
+            <p class="formation">Formation postuleé : {{ $candidature->cohorte->libelle }}</p>
 
         </div>
         <div class="contact-icons mb-4">
@@ -259,14 +259,14 @@ nav {
         </div>
     </div>        <!-- Formulaire de modification du statut -->
     <div class="align-right mb-3">
-        <h2>Modification du Statut</h2>
+        
         <form action="{{ route('candidature.update', ['id' => $candidature->id]) }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="statut">Statut</label>
+                <label for="statut">État de la candidature</label>
                 <select name="statut" id="statut" class="form-control">
                     <option value="en attente" {{ $candidature->statut == 'en attente' ? 'selected' : '' }}>En attente</option>
-                    <option value="acceptée" {{ $candidature->statut == 'acceptée' ? 'selected' : '' }}>Acceptée</option>
+                    <option value="accepté" {{ $candidature->statut == 'accepté' ? 'selected' : '' }}>Accepté</option>
                     <option value="rejeté" {{ $candidature->statut == 'rejeté' ? 'selected' : '' }}>Rejeté</option>
                 </select>
             </div>

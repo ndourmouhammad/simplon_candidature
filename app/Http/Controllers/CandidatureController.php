@@ -18,7 +18,9 @@ class CandidatureController extends Controller
     public function affiche($id)
     {
         // Récupérer la candidature depuis la base de données
-        $candidature = Candidature::findOrFail($id);
+        $candidature = Candidature::with('user', 'cohorte')->findOrFail($id);
+
+        
 
         // Retourner la vue 'candidatures.detail' avec les détails de la candidature
         return view('candidatures.detail', compact('candidature'));
@@ -73,7 +75,7 @@ public function update(Request $request, $id)
 {
     // Validation des données
     $request->validate([
-        'statut' => 'required|string|in:en attente,approuvée,rejeté',
+        'statut' => 'required|string|in:en attente,accepté,rejeté',
     ]);
 
     // Récupération de la candidature

@@ -23,9 +23,9 @@ class Candidature extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cohortes()
+    public function cohorte()
     {
-        return $this->hasMany(Cohorte::class);
+        return $this->belongsTo(Cohorte::class);
     }
 
     public function notification()
