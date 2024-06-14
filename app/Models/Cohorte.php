@@ -16,6 +16,10 @@ class Cohorte extends Model
         'date_fin',
         'lieu_formation',
         'nombre_participants',
+        'promo',
+        'duree',
+        'date_decision',
+        'date_limite',
         'referentiel_id'
     ];
 
