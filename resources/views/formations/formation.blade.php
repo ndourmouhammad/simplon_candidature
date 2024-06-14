@@ -129,7 +129,7 @@ body {
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"> <h3>{{ $cohorte->referentiel->libelle }} P#{{ $cohorte->libelle }}</h3></h5>
+                            <h5 class="card-title"> <h3>{{ $cohorte->libelle }}</h3></h5>
                             <p class="card-text"><p>{{ $cohorte->description }}</p>
                             <a href="{{route('detail-formation', $cohorte->id)}}" class="btn btn-light">Voir</a>
                         </div>

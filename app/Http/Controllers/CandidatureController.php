@@ -91,7 +91,7 @@ class CandidatureController extends Controller
             'cv_professionnel' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        // Gestion du fichier CV professionnel
+        // Gestion du fichier CV 
         $cv_professionnel_path = $request->file('cv_professionnel')->store('cvs', 'public');
 
         // Création d'une nouvelle instance de Candidature
