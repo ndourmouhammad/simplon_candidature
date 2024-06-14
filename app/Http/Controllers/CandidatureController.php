@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cohorte;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,9 @@ class CandidatureController extends Controller
     //Méthode pour afficher la page d'accueil
     public function dashboard()
     {
-        return view('dashboards.dashboard');
+        $nombreCandidats = User::where('role', 'candidat')->count();
+        $nombreFormations = Cohorte::count();
+        return view('dashboards.dashboard', compact('nombreCandidats', 'nombreFormations'));
     }
 
 }
