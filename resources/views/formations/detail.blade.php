@@ -129,7 +129,7 @@
                         <p>Lieu : {{$cohorte->lieu_formation}}</p>
                         <p>Date de limite de la candidature : {{ $cohorte->date_limite }}</p>
                         <p>Bénificiaires : {{$cohorte->nombre_participants }} participants</p>
-                    <button class="btn btn-danger text-white">Postuler</button>
+                    <a href="{{ route('ajouter_candidature', ['cohorte_id' => $cohorte->id]) }}"><button class="btn btn-danger text-white">Postuler</button></a>
             </div>
             <img src="{{ asset('img/Rectangle.png') }}" alt="">
         </div>
