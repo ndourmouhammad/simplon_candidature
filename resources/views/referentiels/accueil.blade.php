@@ -49,13 +49,13 @@
       <div class="col-md-8">
         <img src="https://img.freepik.com/photos-gratuite/participation-homme-formation-apres-avoir-ete-embauche-son-nouveau-travail-bureau_23-2149034623.jpg?t=st=1718208262~exp=1718211862~hmac=486236d3a4f4ea73cc992461b5aea818dfa55c4decbfa45ff38eec7265137366&w=996" alt="Banner Image" class="img-fluid"/>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 pr-5 banniere-text">
         <h2 class="text-center mb-4">Portail SIMPLON</h2>
         <p>
           Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
         </p>
         @guest
-        <div class="d-flex mt-4 ">
+        <div class="d-flex justify-content-between banniere-boutton">
           <a href="{{ route('login') }}" class="btn btn-outline-light mr-4 ">Connexion</a>
           <a href="{{ route('auth.inscription') }}" class="btn btn-outline-light">Inscription</a>
         </div>
