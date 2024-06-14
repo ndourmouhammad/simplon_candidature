@@ -255,7 +255,7 @@ nav {
             <p class="card-text">{{ $candidature->motivation }}</p>
         </div>
         <div class="pdf-link">
-            <a href="path/to/cv.pdf" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
+            <a href="{{ Storage::url($candidature->cv_professionnel) }}" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
         </div>
     </div>        <!-- Formulaire de modification du statut -->
     <div class="align-right mb-3">
