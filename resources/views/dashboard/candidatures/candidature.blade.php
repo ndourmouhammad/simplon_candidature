@@ -111,10 +111,10 @@
                     
                     <td class="action">
 
-                        {{-- <a href="{{ route('detail-candidature', $candidature->id) }}"><img src="{{ asset('img/view.svg') }}" alt=""></a>
+                        <a href="{{ route('candidature.edit', $candidature->id) }}"><img src="{{ asset('img/view.svg') }}" alt="">
 
-                        <a href="{{ route('supprimer-candidature', $candidature->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a> --}}
-                        <a href="#"><img src="{{ asset('img/view.svg') }}" alt=""></a>
+                        {{-- <a href="{{ route('supprimer-candidature', $candidature->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>  --}}
+                        
 
                         <a href="#"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
                     </td> 

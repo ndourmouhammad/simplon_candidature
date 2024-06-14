@@ -37,13 +37,13 @@ class CandidatureStatusChanged extends Notification
      */
     public function toMail($notifiable)
     {
-        if ($this->statut == 'validée') {
+        if ($this->statut == 'accepté') {
             return (new MailMessage)
                 ->subject('Félicitations pour votre candidature!')
                 ->greeting('Bonjour ' . $this->candidature->user->prenom . ',')
                 ->line('Nous avons le plaisir de vous informer que votre candidature a été validée.')
                 ->line('Merci pour votre candidature!');
-        } elseif ($this->statut == 'rejetée') {
+        } elseif ($this->statut == 'rejeté') {
             return (new MailMessage)
                 ->subject('Mise à jour de votre candidature')
                 ->greeting('Bonjour ' . $this->candidature->user->prenom . ',')

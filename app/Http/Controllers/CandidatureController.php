@@ -19,6 +19,8 @@ class CandidatureController extends Controller
     {
         $candidats = User::where('role', 'candidat')->paginate(10);
         return view('dashboard.candidats.candidats', compact('candidats'));
+
+        
         
     }
 
@@ -53,6 +55,7 @@ class CandidatureController extends Controller
         $candidatures = Candidature::with('user', 'cohorte')->get();
         return view('dashboard.candidatures.candidature', compact('candidatures'));
         
+        
     }
 
 
@@ -67,10 +70,10 @@ class CandidatureController extends Controller
         // Récupérer la candidature depuis la base de données
         $candidature = Candidature::with('user', 'cohorte')->findOrFail($id);
 
-        
-
         // Retourner la vue 'candidatures.detail' avec les détails de la candidature
         return view('candidatures.detail', compact('candidature'));
+
+        
     }
     // Méthode pour afficher le formulaire d'ajout d'une nouvelle candidature
     public function ajouter_candidature()
