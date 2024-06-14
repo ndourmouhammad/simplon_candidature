@@ -118,7 +118,7 @@
 
         <div class="info">
             <div class="info-utiles">
-                <h3>Date limite de candidature : <span class="date-limite">19 / 09/ 2024</span></h3>
+                <h3>Date limite de candidature : <span class="date-limite">{{ $cohorte->date_limite }}</span></h3>
                 <hr>
                 <p>Devenez compétents en quelques mois avec cette formation.</p>
                 <div class="pratique">100% PRATIQUE</div>
