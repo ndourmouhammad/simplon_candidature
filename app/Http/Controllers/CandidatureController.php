@@ -64,7 +64,7 @@ class CandidatureController extends Controller
 // Méthode pour afficher le formulaire de modification d'une candidature
 public function edit($id)
 {
-    $candidature = Candidature::with(['user', 'cohortes'])->findOrFail($id);
+    $candidature = Candidature::with(['user',])->findOrFail($id);
     return view('candidatures.edit', compact('candidature'));
 }
 

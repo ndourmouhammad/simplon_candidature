@@ -239,7 +239,6 @@ nav {
         <div class="profile-info">
             <h4 class="candidate-name">{{ $candidature->user->prenom }} {{ $candidature->user->nom }}</h4>
             <p class="formation">Formation postuleé : Adefnipa</p>
-            <p class="card-text">{{ $candidature->cohorte->libelle }}</p>
 
         </div>
         <div class="contact-icons mb-4">
