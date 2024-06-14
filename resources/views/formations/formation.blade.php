@@ -162,13 +162,13 @@
     </div>
         <div class="mb-5">
             <div class="row">
-                @foreach($cohortes as $cohorte)
+                @foreach($referentiels as $referentiel)
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><h3>{{ $cohorte->libelle }}</h3></h5>
-                            <p class="card-text">{{ $cohorte->description }}</p>
-                            <a href="{{route('detail-formation', $cohorte->id)}}" class="btn btn-outline-dark mt-auto">Voir</a>
+                            <h5 class="card-title"><h3>{{ $referentiel->libelle }}</h3></h5>
+                            <p class="card-text">{{ $referentiel->description }}</p>
+                            <a href="{{route('detail-formation', $referentiel->id)}}" class="btn btn-outline-dark mt-auto">Voir</a>
                         </div>
                     </div>
                 </div>

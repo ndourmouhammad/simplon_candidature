@@ -16,7 +16,7 @@ class CohorteController extends Controller
 
     public function listeFormations()
     {
-        $cohortes = Cohorte::with(['referentiel.competences'])->get(); 
+        $cohortes = Cohorte::with(['referentiel.competences'])->paginate(1); 
     $referentiels = Referentiel::with('competences')->get();
     $competences = Competence::all();
 
