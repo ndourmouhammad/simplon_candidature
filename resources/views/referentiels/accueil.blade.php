@@ -56,7 +56,8 @@
             <button class="btn btn-danger">Découvrir</button>
           </div>
         </div>
-        <div class="my-5 text-center">
+        <div class="py-5 text-center chiffres">
+          
           <h3>Nos chiffres</h3>
           <div class="row">
             <div class="col-md-4">
@@ -73,14 +74,14 @@
             </div>
           </div>
         </div>
-        <div class="my-5 forpa section-bleu py-5 px-5">
+        <div class="py-5 forpa section-bleu py-5 px-5">
           <h3 class="text-center">Nos engagements</h3>
           <p class="paragraphe text-center">
             Entreprise sociale agréée solidaire (ESUS) Simplon.co respecte des engagements forts en termes de lucrativité limitée, de gouvernance participative et d’écarts de salaires. Simplon.co soutient les associations, les porteurs de projets solidaires ou les ONG à se développer et à se digitaliser. Nous sommes aussi sociétaires de Sociétés Coopératives d’Intérêt Collectif (SCIC) porteuses de projets solidaires comme le label Emmaüs, la boutique en ligne du réseau Emmaüs, ou de la MedNum, la coopérative des acteurs de la médiation numérique qui oeuvre au quotidien pour une société numérique toujours plus inclusive.​​​​​​​ Notre écosystème ESS c’est aussi : EPIC Foundation (depuis 2015), Grande Ecole du Numérique dont nous sommes le plus grand réseau labellisé, Ashoka dont Simplon est membre depuis 2015, La France s’engage (lauréat 2014), le Mouves et France Eco Sociale Tech (FEST). ​​​​​​​Découvrez notre <a href="#" style="color: #CE0033">plaidoyer pour un numérique d’intérêt général.</a>
           </p>
         </div>
-        <div class="container my-5">
-          <div class="my-5">
+        <div class="container py-5">
+          <div class="py-5">
             <h3 class="text-center mb-4">Nos formations</h3>
             <div class="row">
               @foreach ($referentiels as $referentiel)
@@ -97,7 +98,9 @@
               @endforeach
             </div>
           </div>
-          <div class="my-5">
+        </div>
+
+          <div class="py-5 formulaire">
             <h3 class="text-center">Contactez-nous</h3>
             <form method="POST" action="{{ route('contact.submit') }}">
               @csrf
@@ -129,9 +132,8 @@
             </form>
           </div>
           
-        </div>
     </div>
-    <div class="mt-5 ">
+    <div >
       <div class="row">
         <div class="col-md-12 text-center bg-light py-3" style="background-color: #F0F0F0;">
           <img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" class="img-fluid" width="150px" />

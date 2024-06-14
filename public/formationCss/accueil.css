@@ -12,6 +12,7 @@ body {
 body {
     background-color: #F0F0F0;
     margin: 0;
+    color: #212529;
 }
 
 .image {
@@ -21,7 +22,6 @@ body {
 .banniere {
     background-color: #CE0033;
     color: #fff;
-    width: 100%;
     margin-bottom: 0;
 }
 
@@ -39,15 +39,23 @@ body {
 
 .section-bleu {
     background-color: #F1F5F8;
+
 }
 
 .btn-danger {
     background-color: #CE0033;
 }
+.chiffres{
+    background-color: #fff;
+    align-items: center;
+}
 
 form {
     display: flex;
     justify-content: center;
+}
+.formulaire{
+    background-color: #fff;
 }
 
 .contact {
@@ -58,7 +66,9 @@ img {
     max-width: 100%;
     height: auto;
 }
-
+.card {
+    border-radius: 10px;
+}
 /* Styles for the footer */
 .footer-logo {
     background-color: #F0F0F0;
