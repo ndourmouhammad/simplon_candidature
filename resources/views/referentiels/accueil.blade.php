@@ -62,7 +62,7 @@
         @endguest
       </div>
     </div>
-    <div class="py-5 px-5 justify-content-center section-bleu">
+    <div class="py-5 px-5 justify-content-center section-bleu  section">
       <h3 class="text-center" id="a-propos">A propos de nous</h3>
       <p class="paragraphe text-center">
         Nous sommes un réseau de fabriques numériques et inclusives en France et à l’étranger. Nous avons formé plus de 30 000 Simploniens et Simploniennes depuis 2013, dont 30% de femmes et 46% de personnes peu ou pas diplômées. Nous sommes une entreprise sociale et solidaire qui entend faire du numérique un véritable levier d’inclusion pour révéler des talents différents peu représentés dans le digital et les métiers techniques du numérique. Nous accompagnons les organisations pour que leur transformation digitale reste inclusive.
@@ -72,7 +72,8 @@
         <button class="btn btn-danger">Découvrir</button>
       </div>
     </div>
-    <div class="py-5 text-center chiffres">
+    
+    <div class="py-5 text-center chiffres ">
       <h3>Nos chiffres</h3>
       <div class="row">
         <div class="col-md-4">
@@ -89,12 +90,14 @@
         </div>
       </div>
     </div>
-    <div class="py-5 forpa section-bleu py-5 px-5">
+    <div class="section">
+    <div class="py-5 forpa section-bleu py-5 px-5 ">
       <h3 class="text-center">Nos engagements</h3>
       <p class="paragraphe text-center">
         Entreprise sociale agréée solidaire (ESUS) Simplon.co respecte des engagements forts en termes de lucrativité limitée, de gouvernance participative et d’écarts de salaires. Simplon.co soutient les associations, les porteurs de projets solidaires ou les ONG à se développer et à se digitaliser. Nous sommes aussi sociétaires de Sociétés Coopératives d’Intérêt Collectif (SCIC) porteuses de projets solidaires comme le label Emmaüs, la boutique en ligne du réseau Emmaüs, ou de la MedNum, la coopérative des acteurs de la médiation numérique qui oeuvre au quotidien pour une société numérique toujours plus inclusive. Notre écosystème ESS c’est aussi : EPIC Foundation (depuis 2015), Grande Ecole du Numérique dont nous sommes le plus grand réseau labellisé, Ashoka dont Simplon est membre depuis 2015, La France s’engage (lauréat 2014), le Mouves et France Eco Sociale Tech (FEST). Découvrez notre <a href="#" style="color: #CE0033">plaidoyer pour un numérique d’intérêt général.</a>
       </p>
     </div>
+  </div>
     <div class="container py-5">
       <div class="py-5">
         <h3 class="text-center mb-4">Nos formations</h3>

@@ -45,16 +45,20 @@ body {
     line-height: 1.6; /* Hauteur de ligne augmentée pour une meilleure lisibilité */
     margin-bottom: 20px; /* Espacement inférieur */
 }
-.btn-primary {
+.btn-outline-light {
     background-color: #fff;
     color: #CE0033;
     border: none;
+    width: 50%;
+
+
 }
 
-.btn-primary:hover {
+.btn-outline-light:hover {
     background-color: #CE0033;
     color: #fff;
     border: solid #fff;
+
 }
 
 .section-bleu {
