@@ -31,7 +31,7 @@ Route::get('/candidature/{id}', [CandidatureController::class, 'affiche'])->name
 // Route d'affichage du formulaire d'ajout de candidature
 Route::get('/ajouter/candidature/{cohorte_id}', [CandidatureController::class, 'ajouter_candidature'])->name('ajouter_candidature')->middleware('auth');
 //Route pour traiter l'ajout d'une candidature
-
+Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
@@ -50,7 +50,7 @@ Route::get('/form-modifier-formation/{id}', [CohorteController::class, 'modifier
 Route::post('/modifier-formation/{id}', [CohorteController::class, 'modifierFormation'])->name('modifier-formation')->middleware('auth');
 Route::get('/supprimer-formation/{id}', [CohorteController::class, 'supprimerFormation'])->name('supprimer-formation')->middleware('auth');
 Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatures'])->name('candidatures-personnel')->middleware('auth');
-Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
+
 // web.php (ou routes/web.php)
 Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
 Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');

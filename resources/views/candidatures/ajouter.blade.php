@@ -14,17 +14,59 @@
             justify-content: center;
             align-items: center;
             height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+            width: 75vh;
         }
         .image-background img {
             max-width: 100%;
-            height: auto;
+            margin-top: -300px;
         }
         .form-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+            border-radius: 10px;
         }
+        .btn-envoyer {
+    background-color: black; /* Fond noir */
+    color: white; /* Texte blanc */
+    border-color: black; /* Bordure noire */
+    margin-right: 10px; /* Espacement entre les boutons */
+}
+
+.btn-envoyer:hover {
+    background-color: white; /* Fond blanc au survol */
+    color: black; /* Texte noir au survol */
+}
+
+.btn-annuler {
+    background-color: transparent; /* Fond transparent */
+    color: red; /* Texte rouge */
+}
+
+.btn-annuler:hover {
+    background-color: red; /* Fond rouge au survol */
+    color: white; /* Texte blanc au survol */
+}
+.form-title {
+    margin-left: 2px; /* Marge de 75px entre le fond noir et le titre */
+    font-size: 35px;
+    font-weight: bold;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+    padding-top: 75px; /* Ajouter une marge en haut de 75px */
+    padding-left: 55px; /* Ajouter une marge à gauche de 75px */
+    padding-right: 55px; /* Ajouter une marge à droite de 75px */
+    font-weight: 600;
+}
+.form-label,
+.form-control {
+    margin-top: 10px; /* Marge entre les labels/inputs et le fond noir */
+}
     </style>
 </head>
 <body>
@@ -34,15 +76,14 @@
             <!-- Section de l'image à gauche avec fond personnalisé -->
             <div class="col-md-6 image-background">
                 <link rel="stylesheet" href="{{ asset('tableau/style.css') }}" />
-                <img src="{{ asset('img/couverture5.webp') }}" class="img-fluid" alt="...">
+                <img src="{{ asset('img/image-4.png') }}" class="img-fluid" alt="...">
 
-                <img src="{{ asset('img/couverture5.webp') }}" alt="Image descriptive" class="img-fluid">
             </div>
 
             <!-- Section du formulaire à droite -->
             <div class="col-md-6 form-container">
                 <!-- Titre de la page au-dessus du formulaire -->
-                <h1>Soumettre une candidature</h1>
+                <h1 class="form-title">Formulaire de candidature</h1>
                
                 <!-- Affichage des messages de statut -->
                 @if (session('status'))
@@ -58,6 +99,15 @@
                     <input type="hidden" name="cohorte_id" value="{{ $cohorte_id }}">
                 
                     <!-- Les autres champs du formulaire -->
+                    <div class="mb-3">
+                        <label for="cv_professionnel" class="form-label">Curriculum vitae</label>
+                        <input type="file" class="form-control @error('cv_professionnel') is-invalid @enderror" id="cv_professionnel" name="cv_professionnel">
+                        @error('cv_professionnel')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
                     <div class="mb-3">
                         <label for="biographie" class="form-label">Biographie</label>
                         <textarea class="form-control @error('biographie') is-invalid @enderror" id="biographie" name="biographie" rows="4">{{ old('biographie') }}</textarea>
@@ -76,19 +126,9 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="cv_professionnel" class="form-label">Télécharger votre CV</label>
-                        <input type="file" class="form-control @error('cv_professionnel') is-invalid @enderror" id="cv_professionnel" name="cv_professionnel">
-                        @error('cv_professionnel')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                
                     <!-- Boutons de soumission et de retour -->
-                    <button type="submit" class="btn btn-primary">Soumettre la candidature</button>
-                    <a href="/candidature" class="btn btn-danger">Retourner</a>
+                    <button type="submit" class="btn btn-envoyer">Envoyer</button>
+                    <a href="/formations" class="btn btn-annuler">Annuler</a>
                 </form>
             </div>
         </div>

@@ -242,7 +242,7 @@ nav {
 
         </div>
         <div class="contact-icons mb-4">
-            <a href="#"><img src="{{ asset('img/icon.svg') }}" alt="" class="mr-2 ">{{ $candidature->user->date_naissance }}</a>
+            <a href="#"><img src="{{ asset('img/icon.svg') }}" alt="" class="mr-2 ">{{ $candidature->user->adresse }}</a>
             <a href="#"><img src="{{ asset('img/Phone.svg') }}" alt="" class="mr-2">{{ $candidature->user->telephone }}</a>
             <a href="#"><img src="{{ asset('img/Mail.svg') }}" alt="" class="mr-2">{{ $candidature->user->email }}</a>
         </div>
@@ -255,7 +255,7 @@ nav {
             <p class="card-text">{{ $candidature->motivation }}</p>
         </div>
         <div class="pdf-link">
-            <a href="path/to/cv.pdf" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
+            <a href="{{ Storage::url($candidature->cv_professionnel) }}" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
         </div>
     </div>        <!-- Formulaire de modification du statut -->
     <div class="align-right mb-3">

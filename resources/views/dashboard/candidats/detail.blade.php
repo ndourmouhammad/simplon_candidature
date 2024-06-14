@@ -88,7 +88,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <div class="pdf-link">
-                    <a href="path/to/cv.pdf" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
+                  <a href="#" target="_blank"><img src="{{ asset('img/image5.png') }}" alt=""></a>
                 </div>
             </div>
 
