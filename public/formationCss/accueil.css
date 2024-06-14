@@ -4,7 +4,6 @@ body {
 }
 * {
     margin: 0;
-    overflow-x: hidden;
     box-sizing: border-box;
     padding: 0;
 }
@@ -12,6 +11,7 @@ body {
 body {
     background-color: #F0F0F0;
     margin: 0;
+    overflow-x: hidden;
     color: #212529;
 }
 
@@ -23,18 +23,42 @@ body {
     background-color: #CE0033;
     color: #fff;
     margin-bottom: 0;
+
+
+
 }
 
-.btn-primary {
+
+.banniere-text {
+    text-align: center;
+    padding: 0 20px; /* Ajustement du padding pour le texte de la bannière */
+}
+
+.banniere-text h2 {
+    width: 100%; /* Pleine largeur pour le titre */
+    max-width: 400px; /* Largeur maximale pour le titre */
+    margin: 0 auto 20px; /* Centrage vertical et espacement inférieur */
+}
+
+.banniere-text p {
+    text-align: justify; /* Justification du texte */
+    line-height: 1.6; /* Hauteur de ligne augmentée pour une meilleure lisibilité */
+    margin-bottom: 20px; /* Espacement inférieur */
+}
+.btn-outline-light {
     background-color: #fff;
     color: #CE0033;
     border: none;
+    width: 50%;
+
+
 }
 
-.btn-primary:hover {
+.btn-outline-light:hover {
     background-color: #CE0033;
     color: #fff;
     border: solid #fff;
+
 }
 
 .section-bleu {

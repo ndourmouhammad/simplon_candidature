@@ -52,26 +52,12 @@
                 @endif
               
                 <!-- Formulaire de soumission de candidature -->
-                <form action="/ajouter/traitement" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('ajouter_candidature_traitement') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label for="cohorte_id" class="form-label">ID Cohorte</label>
-                        <input type="text" class="form-control @error('cohorte_id') is-invalid @enderror" id="cohorte_id" name="cohorte_id" value="{{ old('cohorte_id') }}">
-                        @error('cohorte_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">ID Utilisateur</label>
-                        <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" value="{{ old('user_id') }}">
-                        @error('user_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+                    <!-- Champ caché pour l'ID de la cohorte -->
+                    <input type="hidden" name="cohorte_id" value="{{ $cohorte_id }}">
+                
+                    <!-- Les autres champs du formulaire -->
                     <div class="mb-3">
                         <label for="biographie" class="form-label">Biographie</label>
                         <textarea class="form-control @error('biographie') is-invalid @enderror" id="biographie" name="biographie" rows="4">{{ old('biographie') }}</textarea>
@@ -99,7 +85,7 @@
                         </div>
                         @enderror
                     </div>
-
+                
                     <!-- Boutons de soumission et de retour -->
                     <button type="submit" class="btn btn-primary">Soumettre la candidature</button>
                     <a href="/candidature" class="btn btn-danger">Retourner</a>
