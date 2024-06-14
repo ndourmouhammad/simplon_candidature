@@ -33,18 +33,18 @@
               </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                <a href="#" class="nav-link ">
+                    <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
               </li>
               <li class="nav-item">
                 
-                  <a href="{{ route('candidatures-personnel') }}" class="nav-link">
-                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
+                  <a href="#" class="nav-link active">
+                    <img src="{{ asset('img/groups.svg') }}" alt="candidatures"> 
                     <span>Candidatures</span>
                 </a>
-               
+                
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -75,7 +75,7 @@
           </div>
           <div >
             <div class="header">
-                <h1>Liste des candidats</h1>
+                <h1>Liste des candidature</h1>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -93,34 +93,38 @@
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
-                    <th>Adresse email</th>
                     <th>Formation postulée</th>
+                    <th>Date soumission</th>
+                    <th>Statut</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody id="candidatesTable">
-                @foreach ($candidats as $candidat)
+                @foreach ($candidatures as $candidature)
                 <tr>
-                    <td>{{ $candidat->nom }}</td>
-                    <td>{{ $candidat->prenom }}</td>
-                    <td>{{ $candidat->email }}</td>
-                    <td>Adefnipa</td>
+                    <td>{{ $candidature->user->nom }}</td>
+                    <td>{{ $candidature->user->prenom }}</td>
+                    <td>{{ $candidature->cohorte->libelle }}</td>
+                    <td>{{ $candidature->created_at }}</td>
+                    <td>{{ $candidature->statut }}</td>
+                  
                     
                     <td class="action">
 
-                        <a href="{{ route('detail-candidat', $candidat->id) }}"><img src="{{ asset('img/view.svg') }}" alt=""></a>
+                        {{-- <a href="{{ route('detail-candidature', $candidature->id) }}"><img src="{{ asset('img/view.svg') }}" alt=""></a>
 
-                        <a href="{{ route('supprimer-candidat', $candidat->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
-                    </td>
+                        <a href="{{ route('supprimer-candidature', $candidature->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a> --}}
+                        <a href="#"><img src="{{ asset('img/view.svg') }}" alt=""></a>
+
+                        <a href="#"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
+                    </td> 
                 </tr>
                 @endforeach
                
             </tbody>
         </table>    
           
-          <div class="d-flex justify-content-center mt-4">
-            {{ $candidats->links() }}
-          </div>
+          
 
 
         </main>

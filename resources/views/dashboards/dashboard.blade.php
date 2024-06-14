@@ -240,7 +240,7 @@
                       <i class="fas fa-users"></i>
                     </div>
                     <div>
-                      <h5 class="card-title">1254</h5>
+                      <h5 class="card-title">{{ $nombreCandidatures }}</h5>
                       <p class="card-text">Candidatures</p>
                     </div>
                   </div>

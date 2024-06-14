@@ -39,6 +39,7 @@ Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->n
 Route::get('/form-modifier-formation/{id}', [CohorteController::class, 'modifierFormationForm'])->name('modifierFormationForm')->middleware('auth');
 Route::post('/modifier-formation/{id}', [CohorteController::class, 'modifierFormation'])->name('modifier-formation')->middleware('auth');
 Route::get('/supprimer-formation/{id}', [CohorteController::class, 'supprimerFormation'])->name('supprimer-formation')->middleware('auth');
+Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatures'])->name('candidatures-personnel')->middleware('auth');
 });
 
 
