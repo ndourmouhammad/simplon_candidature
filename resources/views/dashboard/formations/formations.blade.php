@@ -9,9 +9,11 @@
     <style>
       .card-equal-height {
         height: 100%;
-        width: 20rem;
+        width: 15rem;
+        
+      
     }
-
+   
     .card-text p {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -19,6 +21,14 @@
         -webkit-line-clamp: 3; /* Number of lines to show */
         -webkit-box-orient: vertical;
     }
+    .form-inline {
+      order: -1
+    }
+   .flexer {
+    display: flex;
+    justify-content: space-between;
+    
+   }
     </style>
   </head>
   <body>
@@ -71,16 +81,19 @@
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
-                <div class="btn-group">
-                    <span class="badge badge-secondary">Chef de projet</span>
-                    <span class="font-weight-bold">Wahab Diallo</span>
-                </div>
+              <div class="btn-group">
+                    
+                
+                <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                <span>{{ Auth::user()->role }}</span>
+            
+        </div>
             </div>
 
           </div>
           <div >
             <div class="header">
-                <h1>Les formations</h1>
+               
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -91,27 +104,33 @@
                     <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
                 </div>
             </div>
-            <div class="add mb-5">
-                <a href="{{ route('ajoutFormationForm') }}"><img src="{{ asset('img/add.svg') }}" alt="">Ajouter une formation</a>
+            <div class="flexer">
+              <div>
+                <h1>Les formations</h1>
+              </div>
+              <div class="add mb-5">
+                  <a href="{{ route('ajoutFormationForm') }}"><img src="{{ asset('img/add.svg') }}" alt="">Ajouter une formation</a>
+              </div>
             </div>
+            
           
 
             
             <div class="ref mb-5">
               <div class="row">
                   @foreach($cohortes as $cohorte)
-                  <div class="col-md-3 mb-4">
+                  <div class="col-md-3 mb-4 flex">
                       <div class="card card-equal-height">
                           <div class="card-body d-flex flex-column">
                               <h5 class="card-title">
                                   <h3>
-                                      <a href="{{ route('detail-formation-personnel', $cohorte->id) }}">
-                                          {{ $cohorte->referentiel->libelle }} P#{{ $cohorte->promo }}
+                                      <a href="{{ route('detail-formation-personnel', $cohorte->id) }}" style="color: #000000; font-size:20px; font-weight:500">
+                                          {{ $cohorte->referentiel->libelle }}
                                       </a>
                                   </h3>
                               </h5>
                               <p class="card-text">
-                                  <p>{{ Str::limit($cohorte->description, 100) }}</p> <!-- Limite à 100 caractères -->
+                                  <p>{{ Str::limit($cohorte->description, 50) }}</p> <!-- Limite à 100 caractères -->
                               </p>
                               <div class="mt-auto d-flex justify-content-between">
                                   <a href="{{ route('supprimer-formation', $cohorte->id) }}">

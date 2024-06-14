@@ -22,6 +22,29 @@
         .select2-container--default .select2-selection--multiple .select2-selection__choice {
             border: 1px solid #007bff !important;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+.container h1 {
+    font-size: 42px;
+    font-weight: 900
+}
+label {
+    font-size: 20px;
+    font-weight: 500
+}
+input{
+    border: #000 1px solid;
+    border-radius: 10px;
+}
+.info-utiles button {
+    width: 30%;
+  }
+  form-row {
+    display: flex;
+    justify-content: space-between
+  }
     </style>
 
   </head>
@@ -76,9 +99,12 @@
             </div>
             <div class="col-md-4 text-md-right">
                 <div class="btn-group">
-                    <span class="badge badge-secondary">Chef de projet</span>
-                    <span class="font-weight-bold">Wahab Diallo</span>
-                </div>
+                    
+                
+                    <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                    <span>{{ Auth::user()->role }}</span>
+                
+            </div>
             </div>
 
           </div>
@@ -197,7 +223,8 @@
                             </div>
                         </div>
                 
-                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                       
+                        <button type="submit"  class="btn  text-dark py-2" style="width: 18%; background:#FFA500">Mettre à jour</button>
                     </form>
                 </div>
                 

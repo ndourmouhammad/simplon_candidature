@@ -210,18 +210,21 @@
             </div>
             <div class="col-md-4 text-md-right">
               <div class="btn-group">
-                <span class="badge badge-secondary">Chef de projet</span>
-                <span class="font-weight-bold">Wahab Diallo</span>
-              </div>
+                    
+                
+                <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
+                <span>{{ Auth::user()->role }}</span>
+            
+        </div>
             </div>
           </div>
 
           <div class="card">
             <div class="card-body d-flex justify-content-between align-items-center">
               <div class="mr-lg-3">
-                <h5 class="card-title">11 juin 2024</h5>
-                <p class="card-text card-welcome">Bienvenu, Wahab!</p>
-                <p class="card-text"><small class="text-body-secondary">Restez toujours au courant de votre profil</small></p>
+                <h5 class="card-title text-white">{{ date('d M Y') }}</h5>
+                <p class="card-text card-welcome text-white">Bienvenu, {{ Auth::user()->prenom }}!</p>
+                <p class="card-text"><small class="text-body-secondary text-white">Restez toujours au courant de votre profil</small></p>
               </div>
               <img src="{{ asset('img/image-4.png') }}" class="card-img-bottom ml-lg-3" alt="...">
             </div>
@@ -248,8 +251,8 @@
                       <i class="fas fa-users"></i>
                     </div>
                     <div>
-                      <h5 class="card-title">1254</h5>
-                      <p class="card-text">Candidatures</p>
+                      <h5 class="card-title">{{ $nombreCandidats }}</h5>
+                      <p class="card-text">Candidats</p>
                     </div>
                   </div>
                 </div>
@@ -259,8 +262,8 @@
                       <i class="fas fa-users"></i>
                     </div>
                     <div>
-                      <h5 class="card-title">1254</h5>
-                      <p class="card-text">Candidatures</p>
+                      <h5 class="card-title">{{ $nombreFormations }}</h5>
+                      <p class="card-text">Formations</p>
                     </div>
                   </div>
                 </div>

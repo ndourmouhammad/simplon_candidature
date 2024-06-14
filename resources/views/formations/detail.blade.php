@@ -10,8 +10,11 @@
    
     <link rel="stylesheet" href="{{ asset('candidatss/formation.css') }}" />
     <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
