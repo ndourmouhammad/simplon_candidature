@@ -1,6 +1,7 @@
 <?php
 
 
+
 use App\Models\Referentiel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -31,6 +32,7 @@ Route::get('/candidature/{id}', [CandidatureController::class, 'affiche'])->name
 Route::get('/ajouter/candidature/{cohorte_id}', [CandidatureController::class, 'ajouter_candidature'])->name('ajouter_candidature')->middleware('auth');
 //Route pour traiter l'ajout d'une candidature
 Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
+
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 
@@ -53,3 +55,14 @@ Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatur
 Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
 Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');
 });
+
+
+
+Route::get('/auth/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
+Route::post('/auth/connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
+
+
+Route::post('/deconnexion', [AuthController::class, 'deconnexion'])->name('deconnexion');
+Route::get('/auth/index', function () {
+    return view('auth.index');
+})->name('auth.index')->middleware('auth');
