@@ -61,5 +61,30 @@ class CandidatureController extends Controller
     // Redirection vers la vue détaillée de la candidature avec un message de succès
     return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'La candidature a bien été ajoutée avec succès.');
 }
+// Méthode pour afficher le formulaire de modification d'une candidature
+public function edit($id)
+{
+    $candidature = Candidature::with('user')->findOrFail($id);
+    return view('candidatures.edit', compact('candidature'));
+}
+
+// Méthode pour traiter la soumission du formulaire de modification d'une candidature
+public function update(Request $request, $id)
+{
+    // Validation des données
+    $request->validate([
+        'statut' => 'required|string|in:en attente,approuvée,rejeté',
+    ]);
+
+    // Récupération de la candidature
+    $candidature = Candidature::findOrFail($id);
+    $candidature->statut = $request->statut;
+
+    // Sauvegarde de la candidature mise à jour
+    $candidature->save();
+
+    // Redirection avec un message de succès
+    return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'Le statut de la candidature a été mis à jour avec succès.');
+}
 }
 

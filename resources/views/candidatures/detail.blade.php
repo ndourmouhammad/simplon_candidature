@@ -46,6 +46,8 @@
             </div>
         </div>
         <a href="/candidature" class="btn btn-primary">Retour</a>
+        <a href="{{ route('candidature.edit', ['id' => $candidature->id]) }}" class="btn btn-warning mt-3">Modifier</a>
+
     </div>
 
     <!-- Inclusion de Bootstrap JS pour les fonctionnalités interactives -->
