@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'Inscription</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh; /* Minimum height pour couvrir l'écran */
             margin: 0;
-            overflow-y: hidden;
-            overflow-x: hidden;
+            
         }
 
         .register-container {
