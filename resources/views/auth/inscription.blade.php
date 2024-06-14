@@ -76,25 +76,16 @@
         .form-column {
             flex: 1;
             display: flex;
-            
+            flex-direction: column;
             align-items: center;
-            margin: 10px;
-        }
-
-        .form-column:nth-child(odd) {
-            margin-right: 2.5%; /* Ajustement de la marge droite */
-            margin-left: 2.5%; /* Ajustement de la marge gauche */
-        }
-
-        .form-column:nth-child(even) {
-            margin-left: 2.5%; /* Ajustement de la marge gauche */
-            margin-right: 2.5%; /* Ajustement de la marge droite */
+            margin: 20px;
+            justify-content: space-between
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
             margin-bottom: 20px; /* Espace entre les groupes de champs */
         }
@@ -109,17 +100,28 @@
             margin-bottom: 10px;
             color: #000;
         }
+        .button-container {
+            width: 600px;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
         button {
-            padding: 10px 20px;
+            padding: 10px;
             border: none;
             border-radius: 4px;
-            background-color: #d32f2f;
+            background-color: #CE0033;
             color: #fff;
             font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            align-self: center; /* Centrer le bouton */
+            cursor: pointer; /* Centrer le bouton */
+            width: 100%; /* Bouton en pleine largeur */
+            max-width: 600px;
+        }
+        .btn-envoyer{
+            width: 550px;
+            margin-left: 20px;
+            justify-content: center;
         }
 
         button:hover {
@@ -133,8 +135,6 @@
             }
         }
     </style>
-
-
 </head>
 
 <body>
@@ -144,75 +144,80 @@
         </div>
         <div class="register-form">
             <img src="https://tse4.mm.bing.net/th?id=OIP.4v3p4mP-yyOEapEKb-t7AAHaHT&pid=Api&P=0&h=180" alt="Logo" class="logo">
-            <h2>Inscrivez-vous pour rejoindre notre communauté</h2>
+            <h2>Inscrivez-vous pour rejoindre la communauté simplon   </h2>
             <form action="{{ route('auth.traitement.inscription') }}" method="POST">
                 @csrf
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{ old('prenom') }}">
+                        @error('prenom')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Prénom" value="{{ old('prenom') }}">
-                    @error('prenom')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" placeholder="Nom" value="{{ old('nom') }}">
+                        @error('nom')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                        @error('email')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de Passe</label>
+                        <input type="password" id="password" name="password" placeholder="Mot de Passe">
+                        @error('password')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="text" id="telephone" name="telephone" placeholder="Téléphone" value="{{ old('telephone') }}">
+                        @error('telephone')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_naissance">Date de naissance</label>
+                        <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" value="{{ old('date_naissance') }}">
+                        @error('date_naissance')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adresse">Adresse</label>
+                        <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="{{ old('adresse') }}">
+                        @error('adresse')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cv_professionnel">CV Professionnel</label>
+                        <input type="text" id="cv_professionnel" name="cv_professionnel" placeholder="CV Professionnel" value="{{ old('cv_professionnel') }}">
+                        @error('cv_professionnel')
+                        <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" placeholder="Nom" value="{{ old('nom') }}">
-                    @error('nom')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                    @error('email')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Mot de Passe</label>
-                    <input type="password" id="password" name="password" placeholder="Mot de Passe" >
-                    @error('password')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="telephone">Téléphone</label>
-                    <input type="text" id="telephone" name="telephone" placeholder="Téléphone" value="{{ old('telephone') }}">
-                    @error('telephone')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="dob">Date de naissance</label>
-                    <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" value="{{ old('date_naissance') }}">
-                    @error('date_naissance')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="adresse">Adresse</label>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="{{ old('adresse') }}">
-                    @error('adresse')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="cv_professionnel">cv_professionnel</label>
-                    <input type="text" id="cv_professionnel" name="cv_professionnel" placeholder="cv_professionnel" value="{{ old('cv_professionnel') }}">
-                    @error('cv_professionnel')
-                    <span class="error">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <button type="submit">Inscription</button>
             </form>
+            <div class="container">
+                <button class="btn-envoyer" type="submit">Inscription</button>
+            </div>
         </div>
     </div>
 </body>
