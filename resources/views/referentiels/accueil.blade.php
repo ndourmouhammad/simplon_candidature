@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('formationCss/accueil.css') }}" />
+    <style>
+      .d-flex {
+        display: flex;
+        gap: 5rem
+        
+      }
+    </style>
 </head>
 <body>
     <div class="accueil container-fluid p-0">
@@ -14,20 +21,28 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
+                        <a class="nav-link active" href="#">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">A propos</a>
+                        <a class="nav-link" href="#a-propos">A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nos formations</a>
+                      <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-person-circle"></i> Mon compte</a>
+                    </li> --}}
+                    @auth
+                      <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+                    </li> 
+                    <li class="nav-item">
+                      <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déonnexion</a>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </nav>
@@ -40,14 +55,20 @@
             <p>
               Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
             </p>
-            <div class="d-flex mt-4">
-              <button class="btn btn-primary mr-4">Se connecter</button>
-              <button class="btn btn-primary">S’inscrire</button>
-            </div>
+            
+              
+              
+        @guest
+        <div class="d-flex mt-4 ">
+        <a href="{{ route('login') }}" class="btn btn-outline-light">Connexion</a>
+        <a href="{{ route('auth.inscription') }}" class="btn btn-outline-light">Inscription</a>
+      </div>
+        @endguest
+            
           </div>
         </div>
         <div class="py-5 px-5 justify-content-center section-bleu">
-          <h3 class="text-center">A propos de nous</h3>
+          <h3 class="text-center" id="a-propos">A propos de nous</h3>
           <p class="paragraphe text-center">
             Nous sommes un réseau de fabriques numériques et inclusives en France et à l’étranger. Nous avons formé plus de 30 000 Simploniens et Simploniennes depuis 2013, dont 30% de femmes et 46% de personnes peu ou pas diplômées. Nous sommes une entreprise sociale et solidaire qui entend faire du numérique un véritable levier d’inclusion pour révéler des talents différents peu représentés dans le digital et les métiers techniques du numérique. Nous accompagnons les organisations pour que leur transformation digitale reste inclusive.
             ​​​​​De manière indirecte, nous agissons également dans le domaine de la médiation numérique et de l'apprentissage du numérique créatif auprès des enfants.
@@ -101,7 +122,7 @@
         </div>
 
           <div class="py-5 formulaire">
-            <h3 class="text-center">Contactez-nous</h3>
+            <h3 class="text-center" id="contact">Contactez-nous</h3>
             <form method="POST" action="{{ route('contact.submit') }}">
               @csrf
               <div class="contact">
