@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Models\Referentiel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -22,6 +23,13 @@ Route::get('/connexion', [AuthController::class, 'Connexion'])->name('login');
 Route::post('/traitement-connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
 Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
 
+// Postuler
+// Routes d'affichage des candidatures
+Route::get('/candidature/{id}', [CandidatureController::class, 'affiche'])->name('detail_candidature')->middleware('auth');
+
+// Route d'affichage du formulaire d'ajout de candidature
+Route::get('/ajouter/candidature/{cohorte_id}', [CandidatureController::class, 'ajouter_candidature'])->name('ajouter_candidature')->middleware('auth');
+//Route pour traiter l'ajout d'une candidature
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
@@ -39,12 +47,9 @@ Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->n
 Route::get('/form-modifier-formation/{id}', [CohorteController::class, 'modifierFormationForm'])->name('modifierFormationForm')->middleware('auth');
 Route::post('/modifier-formation/{id}', [CohorteController::class, 'modifierFormation'])->name('modifier-formation')->middleware('auth');
 Route::get('/supprimer-formation/{id}', [CohorteController::class, 'supprimerFormation'])->name('supprimer-formation')->middleware('auth');
+Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatures'])->name('candidatures-personnel')->middleware('auth');
+Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
+// web.php (ou routes/web.php)
+Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
+Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');
 });
-
-
-
-
-
-
-
-
