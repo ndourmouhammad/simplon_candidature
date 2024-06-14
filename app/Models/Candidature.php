@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\CandidatureStatusChanged;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Candidature extends Model
 {
@@ -19,6 +20,15 @@ class Candidature extends Model
         'cohorte_id'
     ];
 
+    protected static function booted()
+    {
+        static::updated(function ($candidature) {
+            if ($candidature->isDirty('statut')) {
+                $candidature->user->notify(new CandidatureStatusChanged($candidature, $candidature->statut));
+            }
+        });
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);

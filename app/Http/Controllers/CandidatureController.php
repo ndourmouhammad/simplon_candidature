@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidature;
 use App\Models\Cohorte;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -40,7 +41,15 @@ class CandidatureController extends Controller
     {
         $nombreCandidats = User::where('role', 'candidat')->count();
         $nombreFormations = Cohorte::count();
-        return view('dashboards.dashboard', compact('nombreCandidats', 'nombreFormations'));
+        $nombreCandidatures = Candidature::count();
+        return view('dashboards.dashboard', compact('nombreCandidats', 'nombreFormations', 'nombreCandidatures'));
+    }
+
+    public function candidatures()
+    {
+        $candidatures = Candidature::with('user', 'cohorte')->get();
+        return view('dashboard.candidatures.candidature', compact('candidatures'));
+        
     }
 
 }
