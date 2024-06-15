@@ -62,8 +62,9 @@
         @endguest
       </div>
     </div>
-    <div class="py-5 px-5 justify-content-center section-bleu  section">
-      <h3 class="text-center" id="a-propos">A propos de nous</h3>
+    <div class=" justify-content-center section-bleu  section">
+      <div>
+      <h3 class="text-center pb-2" id="a-propos">A propos de nous</h3>
       <p class="paragraphe text-center">
         Nous sommes un réseau de fabriques numériques et inclusives en France et à l’étranger. Nous avons formé plus de 30 000 Simploniens et Simploniennes depuis 2013, dont 30% de femmes et 46% de personnes peu ou pas diplômées. Nous sommes une entreprise sociale et solidaire qui entend faire du numérique un véritable levier d’inclusion pour révéler des talents différents peu représentés dans le digital et les métiers techniques du numérique. Nous accompagnons les organisations pour que leur transformation digitale reste inclusive.
         De manière indirecte, nous agissons également dans le domaine de la médiation numérique et de l'apprentissage du numérique créatif auprès des enfants.
@@ -72,27 +73,32 @@
         <button class="btn btn-danger">Découvrir</button>
       </div>
     </div>
+    </div>
     
-    <div class="py-5 text-center chiffres ">
-      <h3>Nos chiffres</h3>
-      <div class="row">
-        <div class="col-md-4">
-          <h4>100</h4>
-          <p>Nos engagements</p>
+    <div class=" text-center py-5 chiffres section ">
+      <div class="nos-chiffres">
+      <h3 class="pb-5">Nos chiffres</h3>
+      <div class="row ">
+        <div class=" d-flex justify-content-around align-item-center">
+        <div >
+          <h4 >100</h4>
+          <p class=" text-center">Nos engagements</p>
         </div>
-        <div class="col-md-4">
+        <div >
           <h4>200</h4>
-          <p>Nos engagements</p>
+          <p class=" text-center">Nos engagements</p>
         </div>
-        <div class="col-md-4">
+        <div >
           <h4>300</h4>
-          <p>Nos engagements</p>
+          <p class=" text-center">Nos engagements</p>
         </div>
       </div>
     </div>
-    <div class="section">
-    <div class="py-5 forpa section-bleu py-5 px-5 ">
-      <h3 class="text-center">Nos engagements</h3>
+    </div>
+    </div>
+    <div class=" forpa section-bleu   section ">
+      <div class="">
+      <h3 class="text-center pb-2">Nos engagements</h3>
       <p class="paragraphe text-center">
         Entreprise sociale agréée solidaire (ESUS) Simplon.co respecte des engagements forts en termes de lucrativité limitée, de gouvernance participative et d’écarts de salaires. Simplon.co soutient les associations, les porteurs de projets solidaires ou les ONG à se développer et à se digitaliser. Nous sommes aussi sociétaires de Sociétés Coopératives d’Intérêt Collectif (SCIC) porteuses de projets solidaires comme le label Emmaüs, la boutique en ligne du réseau Emmaüs, ou de la MedNum, la coopérative des acteurs de la médiation numérique qui oeuvre au quotidien pour une société numérique toujours plus inclusive. Notre écosystème ESS c’est aussi : EPIC Foundation (depuis 2015), Grande Ecole du Numérique dont nous sommes le plus grand réseau labellisé, Ashoka dont Simplon est membre depuis 2015, La France s’engage (lauréat 2014), le Mouves et France Eco Sociale Tech (FEST). Découvrez notre <a href="#" style="color: #CE0033">plaidoyer pour un numérique d’intérêt général.</a>
       </p>

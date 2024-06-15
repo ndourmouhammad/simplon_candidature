@@ -81,6 +81,31 @@
             text-align: center;
             color: white;
         }
+        .footer{
+            background-color: #c3002f
+        }
+        .info-section {
+            background-color: #F0F0F0;
+        }
+
+        .info-section img {
+            width: 150px;
+        }
+
+        .info-section .col-md-4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-section i {
+            font-size: 1.5em;
+        }
+
+        .info-section p {
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
         .container .nav-color .nav-link {
     color: #000000 !important;
 }
@@ -90,27 +115,41 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header ">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center ">
-                <img src="{{ asset('img/logo-s.png') }}" alt="Simplon Senegal" class="logo">
-                <nav class="nav nav-color">
-                    <a href="#" class="nav-link" >Accueil</a>
-                    <a href="#" class="nav-link" >À propos</a>
-                    <a href="{{ route('formations') }}" class="nav-link" >Nos formations</a>
-                    <a href="#" class="nav-link" >Contact</a>
-                </nav>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" width="130px" class="image" /></a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('accueil') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">A propos</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                @auth
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+                </li> 
+                <li class="nav-item">
+                  <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déonnexion</a>
+                </li>
+                @endauth
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- Banner -->
     <div class="mb-4 banniere">
         
-        <button class="btn btn-light text-danger">Candidater</button>
+        <a href="{{ url()->previous() }}" class="btn btn-light text-danger">Retour</a>
     </div>
 
-    <main class="main-entier">
+    <main class="main-entier mb-5">
         <div class="introduction">
             <h1>{{ $cohorte->referentiel->libelle }}</h1>
             <p>{{ $cohorte->referentiel->description }}</p>
@@ -158,39 +197,30 @@
           </div>
     </main>
 
-        <!-- Footer -->
-        <footer class="footer bg-danger text-white py-4 mt-5">
-            <div class="container text-center">
-                <p>Cite keur gorgui | +221 33 824 29 27 | Simplon@gmail.com</p>
+    <div class="info-section">
+        <div class="row">
+            <div class="col-md-12 text-center bg-light py-3">
+                <img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" class="img-fluid" />
             </div>
-        </footer>
+            <div class="footer d-flex" >
+            <div class="col-md-4  justify-content-center  py-4">
+                <i class="bi bi-geo-alt text-light"></i>
+                <p class="text-white pl-2">Cite keur gorgui</p>
+            </div>
+            <div class="col-md-4  justify-content-center  py-4">
+                <i class="bi bi-telephone text-light"></i>
+                <p class="text-white pl-2">+221 33 824 29 27</p>
+            </div>
+            <div class="col-md-4  justify-content-center  py-4">
+                <i class="bi bi-envelope text-light"></i>
+                <p class="text-white pl-2">Simplon@gmail.com</p>
+            </div>
+        </div>
+        </div>
+    </div>
     
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
     </html>
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {{ $cohorte->referentiel->libelle }} {{ $cohorte->libelle }}
-    <p>{{ $cohorte->description }}</p>
-    <p>date debut et date fin : du {{$cohorte->date_debut}} au {{$cohorte->date_fin}}</p>
-    <p>Nombre participants : {{$cohorte->nombre_participants}}</p>
-    <p>Lieu : {{$cohorte->lieu_formation}}</p>
-    <p>Type de référentiel : {{$cohorte->referentiel->type}}</p>
-    <p>Competences:</p>
-    <ul>
-        @foreach($cohorte->referentiel->competences as $competence)
-            <h1>Composants {{ $competence->type }}</h1>
-            <li>{{ $competence->libelle }}</li>
-        @endforeach
-    </ul>
-</body>
-</html> --}}

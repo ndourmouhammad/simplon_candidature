@@ -147,6 +147,7 @@
 
     <!-- Banner -->
     <div class="pt-4 banniere">
+        <h2 class="font-weight-bold text-light" >Nos formations</h2>
     </div>
 
     
@@ -154,7 +155,7 @@
     <!-- Main Content -->
     <main class="container mt-5 ">
         <div class="d-flex justify-content-between align-items-center  my-5">
-            <h2 class="font-weight-bold text-dark" >Nos formations</h2>
+            <h2></h2>
         <div class="form-inline  ">
             <input type="text" class="form-control mr-2" id="emailFilter" placeholder="formation">
             <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
