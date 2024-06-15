@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+>>>>>>> release/0.0.18
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
@@ -127,10 +131,10 @@
       .card-custom {
         background-color: white;
         color: #c3002f; /* Texte rouge */
-        width: 272px; /* Largeur de la carte */
+        width: 220px; /* Largeur de la carte */
         height: 163px; /* Hauteur de la carte */
         border: 2px solid #ede0e3; /* Couleur des bordures de la carte */
-        margin: 10px; /* Espacement entre les cartes */
+        margin: 7px; /* Espacement entre les cartes */
       }
 
       .icon-wrapper {
@@ -143,7 +147,7 @@
       }
 
       .card-spacing {
-        margin-right: 50px; /* Espace entre les cartes */
+        margin-right: 80px; /* Espace entre les cartes */
       }
 
       .card-spacing:last-child {
@@ -163,15 +167,32 @@
         background-color: #ffffff; /* Fond blanc */
         padding: 20px;
       }
-      h1 {
-        font-size: 42px;
-        font-weight: bold;
+
+      .date-style {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
       }
-      .titre h2 {
-  font-size: 22px;
-  color: #CE0033;
-}
+
+      .welcome-style {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+      }
+
+      .profile-style {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+      .montitre{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 42px;
+        margin-left: 10px;
+      }
     </style>
+    
   </head>
   <body>
     <div class="container-fluid">
@@ -235,16 +256,16 @@
           <div class="card">
             <div class="card-body d-flex justify-content-between align-items-center">
               <div class="mr-lg-3">
-                <h5 class="card-title text-white">{{ date('d M Y') }}</h5>
-                <p class="card-text card-welcome text-white">Bienvenue, {{ Auth::user()->prenom }}!</p>
-                <p class="card-text"><small class="text-body-secondary text-white">Restez toujours au courant de votre profil</small></p>
+                <h5 class="card-title text-white date-style">{{ date('d M Y') }}</h5>
+                <p class="card-text card-welcome text-white welcome-style">Bienvenu, {{ Auth::user()->prenom }}!</p>
+                <p class="card-text profile-style"><small class="text-body-secondary text-white">Restez toujours au courant de votre profil</small></p>
               </div>
               <img src="{{ asset('img/image-4.png') }}" class="card-img-bottom ml-lg-3" alt="...">
             </div>
           </div>
 
           <div>
-            <h1>Statistiques</h1>
+            <h1 class="montitre">Statistiques</h1>
             <div class="container mt-4">
               <div class="d-flex flex-wrap">
                 <div class="card card-custom card-spacing mb-3">
@@ -284,7 +305,7 @@
             </div>
           </div>
 
-          <div>
+          {{-- <div>
             <h1>Formations à venir</h1>
             <div class="container-custom card-body d-flex justify-content-around">
               <div>
@@ -304,7 +325,7 @@
                 <p class="card-text">21/12/2024</p>
               </div>
             </div>
-          </div>
+          </div> --}}
         </main>
       </div>
     </div>

@@ -107,7 +107,7 @@ nav {
 }
 .profile-card .contact-icons i {
   font-size: 20px;
-  color: #e74c3c;
+  color: #C3002F;
   margin: 10px;
 }
 .profile-card .pdf-link {
