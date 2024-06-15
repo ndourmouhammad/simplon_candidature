@@ -322,6 +322,10 @@
 #red {
     background: #CE0033
 }
+.retour {
+    width: 80%;
+    margin: 0 auto;
+}
 
     </style>
 </head>
@@ -365,7 +369,13 @@
                 <button class="candidater-button">Candidater</button>
             </a>
         </div>
+        
         <div class="contain">
+            <div class="retour">
+                <a href="{{ route('formations') }}">
+                    <button class="candidater-button ">Retour</button>
+                </a>
+            </div>
         <div class="description">
             <h1>{{ $cohorte->referentiel->libelle }}</h1>
             <p>{{ $cohorte->referentiel->description }}</p>
