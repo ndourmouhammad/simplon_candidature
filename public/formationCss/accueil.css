@@ -41,7 +41,7 @@ body {
 }
 
 .banniere-text p {
-    text-align: justify; /* Justification du texte */
+    text-align: center; /* Justification du texte */
     line-height: 1.6; /* Hauteur de ligne augmentée pour une meilleure lisibilité */
     margin-bottom: 20px; /* Espacement inférieur */
 }
@@ -50,6 +50,7 @@ body {
     color: #CE0033;
     border: none;
     width: 50%;
+    margin-top: 10px;
 
 
 }
