@@ -145,16 +145,19 @@ nav {
             border-radius: 8px;
         }
         .btn-custom {
-            background-color: red;
-            border-color: red;
+            background-color: #CE0033;
+            border-color:#CE0033;
             width: 195px;
             height: 36px;
             border-radius: 8px;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center
         }
-        .btn-custom:hover {
-            background-color: darkred;
-            border-color: darkred;
-        }
+       
         .form-container {
             display: flex;
             flex-direction: column;
@@ -172,6 +175,24 @@ nav {
             align-items: flex-end;
             margin-top: auto;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+
+
+body {
+background-color: #F0F0F0;
+color: #000;
+font-family: 'Nunito Sans', sans-serif;
+
+}
+.titre h2 {
+font-size: 22px;
+color: #CE0033;
+}
+.contain {
+    width: 98%;
+    margin: 0 auto;
+    
+}
     </style>
   </head>
   <body>
@@ -182,33 +203,33 @@ nav {
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('dashboard') }}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('formations-personnel') }}" class="nav-link ">
                   <img src="{{ asset('img/black.svg') }}" alt="formation"> 
                   <span>Formations</span>
               </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <img src="{{ asset('img/person-24.svg') }}" alt="candidats"> 
+                <a href="{{ route('candidats') }}" class="nav-link ">
+                    <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <a href="#" class="nav-link">
-                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
+                
+                  <a href="{{ route('candidatures-personnel') }}" class="nav-link active">
+                    <img src="{{ asset('img/groups.svg') }}" alt="candidatures"> 
                     <span>Candidatures</span>
                 </a>
-                </a>
+                
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -221,7 +242,7 @@ nav {
               
               <div class="col-md-8">
                   <div class="titre">
-                      <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                      <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                   </div>
               </div>
               <div class="col-md-4 text-md-right">
@@ -234,11 +255,11 @@ nav {
             </div>
 
     <!-- Conteneur principal -->
-    <div class="container mt-5">
+    <div class="contain mt-5">
         <h1>Validation de la candidature</h1>
         <div class="profile-info">
             <h4 class="candidate-name">{{ $candidature->user->prenom }} {{ $candidature->user->nom }}</h4>
-            <p class="formation">Formation postuleé : {{ $candidature->cohorte->libelle }}</p>
+            <p class="formation">Formation postuleé : {{  $candidature->cohorte->referentiel->libelle }}</p>
 
         </div>
         <div class="contact-icons mb-4">
@@ -265,6 +286,7 @@ nav {
             <div class="form-group">
                 <label for="statut">État de la candidature</label>
                 <select name="statut" id="statut" class="form-control">
+                  <option value="sélectionner">sélectionner</option>
                     <option value="en attente" {{ $candidature->statut == 'en attente' ? 'selected' : '' }}>En attente</option>
                     <option value="accepté" {{ $candidature->statut == 'accepté' ? 'selected' : '' }}>Accepté</option>
                     <option value="rejeté" {{ $candidature->statut == 'rejeté' ? 'selected' : '' }}>Rejeté</option>

@@ -50,7 +50,8 @@ class CandidatureController extends Controller
 
     public function candidatures()
     {
-        $candidatures = Candidature::with('user', 'cohorte')->get();
+        //$candidatures = Candidature::with('user', 'cohorte')->get();
+        $candidatures = Candidature::with(['user', 'cohorte.referentiel'])->get();
         return view('dashboard.candidatures.candidature', compact('candidatures'));
     }
 
@@ -82,39 +83,49 @@ class CandidatureController extends Controller
     
     // Méthode pour traiter la soumission du formulaire d'ajout d'une nouvelle candidature
     public function ajouter_candidature_traitement(Request $request)
-    {
-        // Validation des données du formulaire
-        $request->validate([
-            'biographie' => 'required|string',
-            'motivation' => 'required|string',
-            'cohorte_id' => 'required|integer|exists:cohortes,id',
-            'cv_professionnel' => 'required|file|mimes:pdf,doc,docx|max:2048',
-        ]);
+{
+    // Validation des données du formulaire
+    $request->validate([
+        'biographie' => 'required|string',
+        'motivation' => 'required|string',
+        'cohorte_id' => 'required|integer|exists:cohortes,id',
+        'cv_professionnel' => 'required|file|mimes:pdf,doc,docx|max:2048',
+    ]);
 
-        // Gestion du fichier CV 
-        $cv_professionnel_path = $request->file('cv_professionnel')->store('cvs', 'public');
+    // Vérification si une candidature existe déjà pour l'utilisateur et la cohorte spécifiée
+    $existingCandidature = Candidature::where('user_id', Auth::id())
+                                        ->where('cohorte_id', $request->cohorte_id)
+                                        ->first();
 
-        // Création d'une nouvelle instance de Candidature
-        $candidature = new Candidature();
-        $candidature->biographie = $request->biographie;
-        $candidature->motivation = $request->motivation;
-        $candidature->user_id = Auth::id(); // Récupération de l'ID de l'utilisateur connecté
-        $candidature->cohorte_id = $request->cohorte_id;
-        $candidature->cv_professionnel = $cv_professionnel_path;
-
-        // Sauvegarde de la candidature dans la base de données
-        $candidature->save();
-
-        // Redirection vers la vue détaillée de la candidature avec un message de succès
-        return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'La candidature a bien été ajoutée avec succès.');
+    if ($existingCandidature) {
+        return redirect()->route('formations')->with('status', 'Vous avez déjà soumis une candidature pour cette formation.');
     }
+
+    // Gestion du fichier CV 
+    $cv_professionnel_path = $request->file('cv_professionnel')->store('cvs', 'public');
+
+    // Création d'une nouvelle instance de Candidature
+    $candidature = new Candidature();
+    $candidature->biographie = $request->biographie;
+    $candidature->motivation = $request->motivation;
+    $candidature->user_id = Auth::id(); // Récupération de l'ID de l'utilisateur connecté
+    $candidature->cohorte_id = $request->cohorte_id;
+    $candidature->cv_professionnel = $cv_professionnel_path;
+
+    // Sauvegarde de la candidature dans la base de données
+    $candidature->save();
+
+    // Redirection vers la vue détaillée de la candidature avec un message de succès
+    return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'La candidature a bien été ajoutée avec succès.');
+}
+
 
 
 
     // Méthode pour afficher le formulaire de modification d'une candidature
     public function edit($id)
     {
-        $candidature = Candidature::with(['user',])->findOrFail($id);
+        $candidature = Candidature::with(['user', 'cohorte.referentiel'])->findOrFail($id);
         return view('candidatures.edit', compact('candidature'));
     }
 
@@ -134,6 +145,15 @@ class CandidatureController extends Controller
         $candidature->save();
 
         // Redirection avec un message de succès
-        return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'Le statut de la candidature a été mis à jour avec succès.');
+        return redirect()->route('candidatures-personnel')->with('status', 'Le statut de la candidature a été mis à jour avec succès.');
+    }
+
+    public function supprimerCandidature($id)
+    {
+        
+        $candidature = Candidature::findOrFail($id);
+        $candidature->delete();
+
+        return redirect()->route('candidatures-personnel')->with('status', 'Candidature supprimée avec succès.');
     }
 }

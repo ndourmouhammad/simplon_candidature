@@ -45,6 +45,10 @@ input{
     display: flex;
     justify-content: space-between
   }
+  .titre h2 {
+  font-size: 22px;
+  color: #CE0033;
+}
     </style>
 
   </head>
@@ -74,13 +78,13 @@ input{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('candidatures-personnel') }}" class="nav-link">
                     <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
                     <span>Candidatures</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -94,7 +98,7 @@ input{
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
@@ -156,6 +160,7 @@ input{
                                         @endforeach
                                     </select>
                                 </div>
+                                
                             </div>
                         </div>
                 

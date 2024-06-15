@@ -7,9 +7,19 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
       .card-equal-height {
         height: 100%;
-        width: 15rem;
+        width: 19rem;
+        background-color: #fff; /* Couleur de fond de la carte */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  padding: 10px; /* Espacement interne */
+  margin: 10px; /* Espacement externe */
         
       
     }
@@ -29,6 +39,25 @@
     justify-content: space-between;
     
    }
+   .add a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    
+   }
+   .flexer #titre h1 {
+    font-size: 42px;
+    font-weight: :bold;
+   }
+   .contain {
+    width: 98%;
+    margin: 0 auto;
+    
+}
+.titre h2 {
+  font-size: 22px;
+  color: #CE0033;
+}
     </style>
   </head>
   <body>
@@ -41,7 +70,7 @@
               <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -57,13 +86,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('candidatures-personnel') }}" class="nav-link">
                   <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
                   <span>Candidatures</span>
               </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -77,7 +106,7 @@
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
@@ -91,7 +120,7 @@
             </div>
 
           </div>
-          <div >
+          <div class="contain" >
             <div class="header">
                
                 @if(session('success'))
@@ -105,8 +134,8 @@
                 </div>
             </div>
             <div class="flexer">
-              <div>
-                <h1>Les formations</h1>
+              <div id="titre">
+                <h1 style="font-size: 42px; font-weight:bold">Les formations</h1>
               </div>
               <div class="add mb-5">
                   <a href="{{ route('ajoutFormationForm') }}"><img src="{{ asset('img/add.svg') }}" alt="">Ajouter une formation</a>
@@ -119,7 +148,7 @@
             <div class="ref mb-5">
               <div class="row">
                   @foreach($cohortes as $cohorte)
-                  <div class="col-md-3 mb-4 flex">
+                  <div class="col-md-4 mb-4 flex">
                       <div class="card card-equal-height">
                           <div class="card-body d-flex flex-column">
                               <h5 class="card-title">
@@ -130,7 +159,7 @@
                                   </h3>
                               </h5>
                               <p class="card-text">
-                                  <p>{{ Str::limit($cohorte->description, 50) }}</p> <!-- Limite à 100 caractères -->
+                                  <p style="font-size: 16px">{{ Str::limit($cohorte->description, 70) }}</p> <!-- Limite à 100 caractères -->
                               </p>
                               <div class="mt-auto d-flex justify-content-between">
                                   <a href="{{ route('supprimer-formation', $cohorte->id) }}">

@@ -7,53 +7,29 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+
+
       body {
     background-color: #F0F0F0;
     color: #000;
+    font-family: 'Nunito Sans', sans-serif;
  
 }
 
-.container {
-    width: 90%;
-    margin: auto;
-    padding: 20px;
+.contain {
+    width: 98%;
+    margin: 0 auto;
+    
 }
-
-.introduction h1 {
-    color: #CE0033;
-    font-size: 42px;
-    font-style: bold;
-}
-.introduction .cohorte{
+.titre h2 {
+  font-size: 22px;
   color: #CE0033;
-  font-size: 14px;
 }
 
-.introduction p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
 
 .info {
     margin-top: 20px;
-}
-
-.competences-visees {
-  font-size: 20px;
-  font-style: bold;
-}
-
-.info-utiles h3 {
-    font-size: 20px;
-    margin: 5px 0;
-}
-
-
-
-.competences h1 {
-    font-size: 20px;
-    margin-top: 40px;
-    
 }
 
 .competences ul {
@@ -61,14 +37,12 @@
     padding: 0;
 }
 
-.competences ul li {
-    font-size: 1.2em;
-    margin: 5px 0;
-}
 
 .update-button {
     margin-top: 40px;
    
+}.cohorte {
+  color: #CE0033
 }
 
 .update-button button {
@@ -81,11 +55,19 @@
     border-radius: 6px
 }
 
-.update-button button:hover {
-    background-color: #ff4c4c;
-    color: #fff;
+.introduction h1 {
+  font-weight: bold;
+  font-size: 42px;
+  color: #CE0033;
 }
-
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+}
+li, p {
+  font-size: 16px;
+font-style:regular;
+}
     </style>
   </head>
   <body>
@@ -98,7 +80,7 @@
               <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -114,13 +96,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
-                  <span>Candidatures</span>
-              </a>
+                <a href="{{ route('candidatures-personnel') }}" class="nav-link">
+                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
+                    <span>Candidatures</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -134,7 +116,7 @@
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
@@ -148,58 +130,73 @@
             </div>
 
           </div>
-          <div >
-            <div class="header container">
+          <div  class="contain">
+            <div class=" header ">
                 <h1>Les détails de la formation</h1>
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="form-inline">
-                    <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
-                    <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
-                </div>
+                
             </div>
             
                
-            <div class="container">
+            <div class="">
               <div class="introduction">
                   <h1>{{ $cohorte->referentiel->libelle }} </h1>
                   <p class="cohorte">Cohorte {{ $cohorte->promo }}</p>
-                  <p class="desc">{{ $cohorte->referentiel->description }}</p>
+                  <h4>Présentation</h4>
+                  <p>{{ $cohorte->referentiel->description }}</p>
               </div>
               
               <div class="competences">
-                <h1>Compétences visées</h1>
+                <h4>Compétences visées</h4>
                 <ul>
                     @foreach($cohorte->referentiel->competences as $competence)
-                        <li>{{ $competence->libelle }}</li>
+                    <ul>
+                      <li>{{ $competence->libelle }}</li>
+                    </ul>
+                        
                     @endforeach
                 </ul>
             </div>
 
               <div class="competences">
-                <h1 >Les dates utiles</h1>
+                <h4 >Les dates utiles</h4>
                   <div class="competences">
                     <ul>
-                      <li>Date début de la formation : <span class="competences">{{ $cohorte->date_debut }}</span></li>
-                      <li>Date fin de la formation (prévue) : <span class="competences">{{ $cohorte->date_fin }}</span></li>
-                      <li>Date limite de l'appel à candidature : <span class="competences">{{ $cohorte->date_limite }} </span></li>
-                      <li>Date de finalisation des entretiens : <span class="competences">{{ $cohorte->date_decision }}</span></li>
-                      <li>Durée de la formation : <span class="competences">{{ $cohorte->duree }} mois</span></h3>
+                      <li>Date début de la formation : {{ $cohorte->date_debut }}</li>
+                      <li>Date fin de la formation (prévue) : {{ $cohorte->date_fin }}</li>
+                      <li>Date limite de l'appel à candidature : {{ $cohorte->date_limite }} </li>
+                      <li>Date de finalisation des entretiens : {{ $cohorte->date_decision }}</li>
+                      <li>Durée de la formation : {{ $cohorte->duree }} mois</p>
+                    </ul>
                       
-                      </ul>
+                      
+                      
                       
                   </div>
               </div>
 
               <div class="competences">
+                <h4>Lieu de la formation</h4>
                 <ul>
-                  <li>Lieu de la formation : <span class="date-limite">{{ $cohorte->lieu_formation }}</span></li>
-                  <li>Nombre de participants : <span class="date-limite">{{ $cohorte->nombre_participants }} participants</span></li>
-                  <li>Type de formation : <span class="date-limite">formation métier</span></li>
+                  <li>{{ $cohorte->lieu_formation }}</li>
                 </ul>
+                
+                <h4>Nombre de participants</h4>
+                <ul>
+                  <li>{{ $cohorte->nombre_participants }} participants</li>
+                </ul>
+                
+
+                <h4>Type de référentiel</h4>
+                <ul>
+                  <li>{{$cohorte->referentiel->type}}</li>
+                </ul>
+                
+                
             </div>
 
               
