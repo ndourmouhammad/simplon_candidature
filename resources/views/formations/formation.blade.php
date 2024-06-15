@@ -156,9 +156,16 @@
         <div class="d-flex justify-content-between align-items-center  my-5">
             <h2 class="font-weight-bold text-dark" >Nos formations</h2>
         <div class="form-inline  ">
-            <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
+            <input type="text" class="form-control mr-2" id="emailFilter" placeholder="formation">
             <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
         </div>
+    </div>
+    <div>
+        @if(session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+    @endif
     </div>
         <div class="mb-5">
             <div class="row">
@@ -166,7 +173,7 @@
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><h3>{{ $cohorte->libelle }}</h3></h5>
+                            <h5 class="card-title"><h3>{{ $cohorte->referentiel->libelle }}</h3></h5>
                             <p class="card-text">{{ $cohorte->description }}</p>
                             <a href="{{route('detail-formation', $cohorte->id)}}" class="btn btn-outline-dark mt-auto">Voir</a>
                         </div>
