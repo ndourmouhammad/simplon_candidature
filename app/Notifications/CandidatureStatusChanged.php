@@ -40,14 +40,14 @@ class CandidatureStatusChanged extends Notification
         if ($this->statut == 'accepté') {
             return (new MailMessage)
                 ->subject('Félicitations pour votre candidature!')
-                ->greeting('Bonjour ' . $this->candidature->user->prenom . ',')
-                ->line('Nous avons le plaisir de vous informer que votre candidature a été validée.')
+                ->greeting('Bonjour ' . $this->candidature->user->prenom . ' '. $this->candidature->user->nom .',')
+                ->line('Nous avons le plaisir de vous informer que votre candidature pour la formation '.$this->candidature->cohorte->referentiel->libelle.' a été validée.')
                 ->line('Merci pour votre candidature!');
         } elseif ($this->statut == 'rejeté') {
             return (new MailMessage)
                 ->subject('Mise à jour de votre candidature')
                 ->greeting('Bonjour ' . $this->candidature->user->prenom . ',')
-                ->line('Nous regrettons de vous informer que votre candidature a été rejetée.')
+                ->line('Nous regrettons de vous informer que votre candidature la formation '.$this->candidature->cohorte->referentiel->libelle.' a été rejetée.')
                 ->line('Merci pour votre candidature.');
         }
     }

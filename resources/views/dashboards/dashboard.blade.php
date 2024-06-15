@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+=======
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+>>>>>>> release/0.0.18
 
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+
+      body {
+        font-family: 'Nunito Sans', sans-serif;
+      }
+
       .dashboard .text-wrapper-11 {
         position: absolute;
         width: 411px;
         top: 679px;
         left: 320px;
-        font-family: var(--titre-qccueil-font-family);
-        font-weight: var(--titre-qccueil-font-weight);
         color: #000000;
         font-size: var(--titre-qccueil-font-size);
         letter-spacing: var(--titre-qccueil-letter-spacing);
@@ -66,7 +74,6 @@
         top: -1px;
         left: -1px;
         -webkit-text-stroke: 1px #4c464633;
-        font-family: var(--titre-font-family);
         font-weight: var(--titre-font-weight);
         color: #000000;
         font-size: var(--titre-font-size);
@@ -82,7 +89,6 @@
         top: 30px;
         left: -1px;
         -webkit-text-stroke: 1px #4c464633;
-        font-family: "Nunito Sans-Regular", Helvetica;
         font-weight: 400;
         color: #0000009e;
         font-size: 20px;
@@ -118,7 +124,8 @@
       }
 
       .card-welcome {
-        font-size: 1.2em; /* Taille de police augmentée */
+        font-size: 32px; /* Taille de police augmentée */
+        font-weight: 700
       }
 
       .card-custom {
@@ -192,12 +199,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
-            <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
-            <ul class="nav flex-column">
+            <img class="logo mb-5" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
+            <ul class="nav flex-column mt-5">
               <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link active">
                     <img src="{{ asset('img/dashboard.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -232,7 +239,7 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <div class="col-md-8">
               <div class="titre">
-                <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
               </div>
             </div>
             <div class="col-md-4 text-md-right">
@@ -275,7 +282,7 @@
                 <div class="card card-custom card-spacing mb-3">
                   <div class="card-body d-flex align-items-center">
                     <div class="icon-wrapper">
-                      <i class="fas fa-users"></i>
+                      <i class="fas fa-user"></i>
                     </div>
                     <div>
                       <h5 class="card-title">{{ $nombreCandidats }}</h5>
@@ -286,7 +293,7 @@
                 <div class="card card-custom mb-3">
                   <div class="card-body d-flex align-items-center">
                     <div class="icon-wrapper">
-                      <i class="fas fa-users"></i>
+                      <i class="fas fa-school"></i>
                     </div>
                     <div>
                       <h5 class="card-title">{{ $nombreFormations }}</h5>
