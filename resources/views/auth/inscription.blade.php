@@ -143,6 +143,13 @@
                 margin-left: 0; /* Réinitialiser la marge pour les petits écrans */
             }
         }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -214,6 +221,8 @@
                 </div>
                 <div class="button-container">
                     <button type="submit">Inscription</button>
+                    <p>Vous avez déjà un compte ? cliquer <a href="{{ route('login')}}">ici</a></p>
+                   
                 </div>
             </form>
         </div>
