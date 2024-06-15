@@ -123,6 +123,7 @@
                 @enderror
 
                 <button type="submit">Connecter</button>
+                <p>Vous n'avez pas de compte ? cliquer <a href="{{ route('auth.inscription')}}">ici</a></p>
             </form>
 
         </div>
