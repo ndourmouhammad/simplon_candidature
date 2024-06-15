@@ -111,13 +111,13 @@
                 @csrf
 
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                 @error('email')
                     <span class="error">{{ $message }}</span>
                 @enderror
 
                 <label for="password">Mot de Passe</label>
-                <input type="password" id="password" name="password" placeholder="Mot de Passe" required>
+                <input type="password" id="password" name="password" placeholder="Mot de Passe" >
                 @error('password')
                     <span class="error">{{ $message }}</span>
                 @enderror
