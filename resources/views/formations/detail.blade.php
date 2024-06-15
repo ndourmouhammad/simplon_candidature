@@ -179,6 +179,32 @@
             margin-bottom: 50px;
             margin-top: 60px;
             padding-bottom: 30px;
+        }
+        
+        .info-section {
+            background-color: #F0F0F0;
+        }
+
+        .info-section img {
+            width: 150px;
+        }
+
+        .info-section .col-md-4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-section i {
+            font-size: 1.5em;
+        }
+
+        .info-section p {
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
+        .container .nav-color .nav-link {
+    color: #000000 !important;
 }
 
 .card1 {
@@ -293,40 +319,43 @@
     margin: 0 auto;
     
 }
+
     </style>
 </head>
 <body>
-    <header class="header ">
-        <div class="accueil container-fluid p-0">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img src="{{ asset('img/logo-s.png') }}" alt="Simplon Senegal" class="logo"></a>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">À propos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-person-circle"></i> Mon compte</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" width="130px" class="image" /></a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('accueil') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">A propos</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                @auth
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+                </li> 
+                <li class="nav-item">
+                    <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déconnexion</a>
+                </li>
+                @endauth
+            </ul>
         </div>
-    </header>
+    </nav>
 
 
 
         <div class="mb-4 bannier">
-            <h1>Bienvenue sur notre site</h1>
+            <h1>Bienvenue sur la page détail de la formation</h1>
             <p>Rejoignez-nous dès aujourd'hui et faites la différence !</p>
             
             <a href="{{ route('ajouter_candidature', ['cohorte_id' => $cohorte->id]) }}">
@@ -402,17 +431,33 @@
         <!-- <div class="card-box">
             <img src="https://media.istockphoto.com/id/1321462048/photo/digital-transformation-concept-system-engineering-binary-code-programming.jpg?s=1024x1024&w=is&k=20&c=SpP0lU7M-NkRIWUxZdL2rB_MtfegprwutPvbdy0TmMU=" alt="Image promotionnelle">
         </div> -->
-        <footer class="footer bg-danger text-white py-4 mt-5">
-            <div class="container text-center">
-                <p>Cite keur gorgui | +221 33 824 29 27 | Simplon@gmail.com</p>
-            </div>
-        </footer>
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
+    <!-- Footer -->
+  <footer class="footer-bg text-white">
+    <div class="text-center py-3 bg-light">
+      <img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" class="img-fluid" width="150px">
     </div>
+    <div class="contain1 py-4" style="background: #CE0033">
+      <div class="row text-center">
+        <div class="col-md-4 d-flex justify-content-center">
+          <i class="bi bi-geo-alt mr-2"></i>
+          <p>Cité Keur Gorgui</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+          <i class="bi bi-telephone mr-2"></i>
+          <p>+221 33 824 29 27</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+          <i class="bi bi-envelope mr-2"></i>
+          <p>Simplon@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+ 
