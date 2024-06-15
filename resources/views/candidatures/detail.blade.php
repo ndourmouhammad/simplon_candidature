@@ -85,7 +85,7 @@
       <div class="container mt-5">
         <div class="profile-info">
           <h4 class="candidate-name">{{ $candidature->user->prenom }} {{ $candidature->user->nom }}</h4>
-          <p class="formation">Formation postuleé : {{ $candidature->cohorte->libelle }}</p>
+          <p class="formation">Formation postuleé : {{ $candidature->cohorte->referentiel->libelle }} P#{{$candidature->cohorte->promo}}</p>
           <p class="formation">Date et lieu de naissance : {{ $candidature->user->date_naissance }}</p>
         </div>
         
