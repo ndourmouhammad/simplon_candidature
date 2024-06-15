@@ -175,7 +175,7 @@
                     <div class="card">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><h3>{{ $cohorte->referentiel->libelle }}</h3></h5>
-                            <p class="card-text">{{ $cohorte->description }}</p>
+                            <p class="card-text">{{ Str::limit($cohorte->description, 70) }}</p>
                             <a href="{{route('detail-formation', $cohorte->id)}}" class="btn btn-outline-dark mt-auto">Voir</a>
                         </div>
                     </div>
