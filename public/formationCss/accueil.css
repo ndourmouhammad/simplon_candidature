@@ -78,7 +78,7 @@ body {
     font-size: 30px;
 }
 
-.section p {
+.paragraphe {
     line-height: 1.7;
     margin-bottom: 20px;
     padding: 0 9.2em; /* Ajustement du padding pour le contenu de la section */
@@ -107,6 +107,7 @@ h4 {
 
 .nos-chiffres p {
     font-weight: bold;
+    text-align: center;
 }
 
 /* Styles pour les formulaires */
