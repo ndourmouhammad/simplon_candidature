@@ -132,7 +132,7 @@
             font-weight: bold;
         }
 
-        .btn {
+        #btn {
             background-color: #CE0033;
             color: #fff;
             padding: 10px 20px;
@@ -319,6 +319,9 @@
     margin: 0 auto;
     
 }
+#red {
+    background: #CE0033
+}
 
     </style>
 </head>
@@ -436,21 +439,23 @@
     <div class="text-center py-3 bg-light">
       <img src="https://simplon.sn/wp-content/uploads/2023/07/logo-simplonSenegal.png" alt="Logo" class="img-fluid" width="150px">
     </div>
-    <div class="contain1 py-4" style="background: #CE0033">
-      <div class="row text-center">
-        <div class="col-md-4 d-flex justify-content-center">
-          <i class="bi bi-geo-alt mr-2"></i>
-          <p>Cité Keur Gorgui</p>
-        </div>
-        <div class="col-md-4 d-flex justify-content-center">
-          <i class="bi bi-telephone mr-2"></i>
-          <p>+221 33 824 29 27</p>
-        </div>
-        <div class="col-md-4 d-flex justify-content-center">
-          <i class="bi bi-envelope mr-2"></i>
-          <p>Simplon@gmail.com</p>
-        </div>
-      </div>
+    <div id="red">
+        <div class="container py-4">
+            <div class="row text-center">
+              <div class="col-md-4 d-flex justify-content-center">
+                <i class="bi bi-geo-alt mr-2"></i>
+                <p>Cité Keur Gorgui</p>
+              </div>
+              <div class="col-md-4 d-flex justify-content-center">
+                <i class="bi bi-telephone mr-2"></i>
+                <p>+221 33 824 29 27</p>
+              </div>
+              <div class="col-md-4 d-flex justify-content-center">
+                <i class="bi bi-envelope mr-2"></i>
+                <p>Simplon@gmail.com</p>
+              </div>
+            </div>
+          </div>
     </div>
   </footer>
   
