@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
         body {
             background-color: #F0F0F0;
-            font-family: 'nunito-sans', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
             background: #ffffff;
         }
         .navbar-light {
@@ -74,6 +75,7 @@
             justify-content: space-between;
             padding: 50px 20px;
             position: relative;
+            gap: 2.5rem
         }
         .content-section .red-strip {
             width: 100%;
@@ -93,6 +95,7 @@
         .card img {
             position: absolute;
             top: -10px;
+            height: 90%;
             width: 100%;
             border-radius: 10px;
             border-top-left-radius: 30px;
@@ -119,9 +122,14 @@
         .pourcentage {
             background: #CE0033;
             color: #ffffff;
-            padding: 20px;
-            width: 50%;
+            padding: 8px;
+            width: 80%;
             justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
         }
 
         .btn {
@@ -148,6 +156,11 @@
             width: 80%;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .description h1 {
+            font-size: 40px;
+            font-weight: bold;
+            color: #CE0033
+        }
         .content-section1 {
             display: flex;
             justify-content: space-between;
@@ -158,7 +171,7 @@
             position: relative;
             width: 750px;
             height: 600px;
-            background: #CE0033;
+            background: #EFADBE;
             border-top-left-radius: 50px;
             border-top-right-radius: 140px;
             border-bottom-left-radius: 180px;
@@ -271,7 +284,15 @@
     font-size: 2rem;
     color: #fff;
 }
-
+.date-deadline h2, developer-info {
+    font-size: 24px;
+    font-weight: bold;
+}
+.contain {
+    width: 100%;
+    margin: 0 auto;
+    
+}
     </style>
 </head>
 <body>
@@ -302,46 +323,45 @@
         </div>
     </header>
 
+
+
         <div class="mb-4 bannier">
             <h1>Bienvenue sur notre site</h1>
             <p>Rejoignez-nous dès aujourd'hui et faites la différence !</p>
-            <button class="candidater-button">Candidater</button>
+            
+            <a href="{{ route('ajouter_candidature', ['cohorte_id' => $cohorte->id]) }}">
+                <button class="candidater-button">Candidater</button>
+            </a>
         </div>
-
+        <div class="contain">
         <div class="description">
-            <h1>Développement Web et Web Mobile</h1>
-            <p>Cette formation est destinée aux débutants souhaitant acquérir des compétences solides
-                en développement web, ainsi qu'aux professionnels cherchant à se reconvertir ou à approfondir
-                leurs connaissances dans ce domaine.</p>
+            <h1>{{ $cohorte->referentiel->libelle }}</h1>
+            <p>{{ $cohorte->referentiel->description }}</p>
         </div>
         <main class="main-entier">
-            <div class="introduction">
-                <h1>{{ $cohorte->referentiel->libelle }}</h1>
-                <p>{{ $cohorte->referentiel->description }}</p>
-            </div>
+           
         <section class="content-section">
             <div class="intro">
                 <div class="date-info">
                     <div class="date-column-container">
                         <div class="date-column">
                             <div class="date-deadline">
-                                <h2>DATE LIMITE DE CANDIDATURE : <span class="date-limite">{{ $cohorte->date_limite }}</span></h2>
-                                <p class="date-red">19 / 09/ 2024</p>
+                                <h2>Date limite de la candidature : <span class="date-red" style="text-transform: lowercase">{{ $cohorte->date_limite }}</span></h2>
+                               
                                 <hr>
                             </div>
-                            <div class="developer-info">
-                                <h2>DEVENEZ DEVELOPPEUR WEB EN QUELQUES MOIS</h2>
+                            <div class="developer-info" style="text-transform: lowercase">
+                                <h2>Devenez des professionnels en queslques mois</h2>
                             </div>
                             <p class="pourcentage">100% de pratique</p>
-                            <p>TYPE : Formation Métier : {{$cohorte->referentiel->type}}</p>
-                            <p>{{ $cohorte->referentiel->libelle }} P{{ $cohorte->libelle }}</p>
+                            <p>Type de formation : {{$cohorte->referentiel->type}}</p>
+                            {{-- <p>{{ $cohorte->referentiel->libelle }} P{{ $cohorte->libelle }}</p> --}}
                             <div class="location-info">
-                                <p><span class="icon">📅</span> P8 DWWM</p>
-                                <p><span class="icon">📅</span> Début : {{$cohorte->date_debut}} / Fin : {{$cohorte->date_fin}}</p>
-                                <p><span class="icon">📅</span>Durée {{ $cohorte->duree}} mois</p>
-                                <p><span class="icon">📍</span>Lieu : {{$cohorte->lieu_formation}}</p>
-                                <p><span class="icon">📍</span>Date de limite de la candidature : {{ $cohorte->date_limite }}</p>
-                                <p><span class="icon">📍</span>Bénificiaires : {{$cohorte->nombre_participants }} participants</p>
+                                <p>{{ $cohorte->referentiel->libelle }} P#{{ $cohorte->promo }}</p>
+                                <p> Début : {{$cohorte->date_debut}} / Fin : {{$cohorte->date_fin}}</p>
+                                <p>{{ $cohorte->duree}} mois</p>
+                                <p>{{$cohorte->lieu_formation}}</p>
+                                <p></span>Bénificiaires : {{$cohorte->nombre_participants }} participants</p>
 
                                 <a href="{{ route('ajouter_candidature', ['cohorte_id' => $cohorte->id]) }}"><button class="btn btn-danger text-white">Postuler</button></a>
                             </div>
@@ -359,19 +379,11 @@
                 <h3>compétences Techniques</h3><br>
                     @foreach($cohorte->referentiel->competences as $competence)
                         @if ($competence->type == "techniques")
-                        <li>{{ $competence->libelle }}</li>
+                        <ul>
+                            <li>{{ $competence->libelle }}</li>
+                        </ul>
                         @endif
                     @endforeach
-                <ul>
-                    <li>Développement Web Front-End.</li><br>
-                    <li>Développement Web Back-End.</li><br>
-                    <li>Base de Données</li><br>
-                    <li>Développement Mobile.</li><br>
-                    <li>DevOps et Hébergement</li><br>
-                    <!-- <li>Sécurité Informatique.</li> -->
-                    <!-- <li>Méthodologies Agiles.</li> -->
-
-                </ul>
             </div>
             <div class="card2">
                 <h3>Compétences Transversales</h3><br>
@@ -379,21 +391,14 @@
 
                         @if ($competence->type == "transversales")
 
-                        <li>{{ $competence->libelle }}</li>
+                        <ul>
+                            <li>{{ $competence->libelle }}</li>
+                        </ul>
                         @endif
                     @endforeach
-                <ul>
-                    <li>Gestion du Temps et des Projets</li><br>
-                    <li>Résolution de Problèmes</li><br>
-                    <li>Adaptabilité</li><br>
-                    <li>Communication</li><br>
-                    <li>Autonomie</li><br>
-                    <!-- <li>Esprit d'Entrepreneuriat</li><br> -->
-                    <li>Culture Numérique</li>
-
-                </ul>
             </div>
         </section>
+    </div>
         <!-- <div class="card-box">
             <img src="https://media.istockphoto.com/id/1321462048/photo/digital-transformation-concept-system-engineering-binary-code-programming.jpg?s=1024x1024&w=is&k=20&c=SpP0lU7M-NkRIWUxZdL2rB_MtfegprwutPvbdy0TmMU=" alt="Image promotionnelle">
         </div> -->
