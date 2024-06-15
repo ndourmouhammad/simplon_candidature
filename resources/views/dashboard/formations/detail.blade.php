@@ -114,13 +114,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
-                  <span>Candidatures</span>
-              </a>
+                <a href="{{ route('candidatures-personnel') }}" class="nav-link">
+                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
+                    <span>Candidatures</span>
+                </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -156,10 +156,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="form-inline">
-                    <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
-                    <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
-                </div>
+                
             </div>
             
                

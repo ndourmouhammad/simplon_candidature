@@ -54,15 +54,16 @@ Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatur
 // web.php (ou routes/web.php)
 Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
 Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');
+Route::get('/supprimer-candidature/{id}', [CandidatureController::class, 'supprimerCandidature'])->name('supprimer-candidature')->middleware('auth');
 });
 
 
 
-Route::get('/auth/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
-Route::post('/auth/connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
+// Route::get('/auth/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
+// Route::post('/auth/connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
 
 
-Route::post('/deconnexion', [AuthController::class, 'deconnexion'])->name('deconnexion');
-Route::get('/auth/index', function () {
-    return view('auth.index');
-})->name('auth.index')->middleware('auth');
+// Route::post('/deconnexion', [AuthController::class, 'deconnexion'])->name('deconnexion');
+// Route::get('/auth/index', function () {
+//     return view('auth.index');
+// })->name('auth.index')->middleware('auth');
