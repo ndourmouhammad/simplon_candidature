@@ -50,7 +50,8 @@ class CandidatureController extends Controller
 
     public function candidatures()
     {
-        $candidatures = Candidature::with('user', 'cohorte')->get();
+        //$candidatures = Candidature::with('user', 'cohorte')->get();
+        $candidatures = Candidature::with(['user', 'cohorte.referentiel'])->get();
         return view('dashboard.candidatures.candidature', compact('candidatures'));
     }
 
@@ -114,7 +115,7 @@ class CandidatureController extends Controller
     // Méthode pour afficher le formulaire de modification d'une candidature
     public function edit($id)
     {
-        $candidature = Candidature::with(['user',])->findOrFail($id);
+        $candidature = Candidature::with(['user', 'cohorte.referentiel'])->findOrFail($id);
         return view('candidatures.edit', compact('candidature'));
     }
 
@@ -134,6 +135,15 @@ class CandidatureController extends Controller
         $candidature->save();
 
         // Redirection avec un message de succès
-        return redirect()->route('detail_candidature', ['id' => $candidature->id])->with('status', 'Le statut de la candidature a été mis à jour avec succès.');
+        return redirect()->route('candidatures-personnel')->with('status', 'Le statut de la candidature a été mis à jour avec succès.');
+    }
+
+    public function supprimerCandidature($id)
+    {
+        
+        $candidature = Candidature::findOrFail($id);
+        $candidature->delete();
+
+        return redirect()->route('candidatures-personnel')->with('status', 'Candidature supprimée avec succès.');
     }
 }

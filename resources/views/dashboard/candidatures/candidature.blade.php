@@ -21,7 +21,7 @@
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('dashboard') }}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
                     <span>Tableau de bord</span>
                 </a>
@@ -33,7 +33,7 @@
               </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{ route('candidats') }}" class="nav-link ">
                     <img src="{{ asset('img/person.svg') }}" alt="candidats"> 
                     <span>Candidats</span>
                 </a>
@@ -47,7 +47,7 @@
                 
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('auth.deconnexion') }}" class="nav-link">
                     <img src="{{ asset('img/logout-24dp-fill0-wght400-grad0-opsz24-1.svg') }}" alt="deconnexion"> 
                     <span>Déconnexion</span>
                 </a>
@@ -76,9 +76,9 @@
           <div >
             <div class="header">
                 <h1>Liste des candidature</h1>
-                @if(session('success'))
+                @if(session('status'))
                     <div class="alert alert-success">
-                        {{ session('success') }}
+                        {{ session('status') }}
                     </div>
                 @endif
                 <div class="form-inline">
@@ -104,7 +104,7 @@
                 <tr>
                     <td>{{ $candidature->user->nom }}</td>
                     <td>{{ $candidature->user->prenom }}</td>
-                    <td>{{ $candidature->cohorte->libelle }}</td>
+                    <td>{{ $candidature->cohorte->referentiel->libelle }}</td>
                     <td>{{ $candidature->created_at }}</td>
                     <td>{{ $candidature->statut }}</td>
                   
@@ -113,10 +113,10 @@
 
                         <a href="{{ route('candidature.edit', $candidature->id) }}"><img src="{{ asset('img/view.svg') }}" alt="">
 
-                        {{-- <a href="{{ route('supprimer-candidature', $candidature->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>  --}}
+                        <a href="{{ route('supprimer-candidature', $candidature->id) }}"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>  
                         
 
-                        <a href="#"><img src="{{ asset('img/trashh.svg') }}" alt=""></a>
+                        
                     </td> 
                 </tr>
                 @endforeach
