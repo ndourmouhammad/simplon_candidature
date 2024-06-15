@@ -21,7 +21,7 @@
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="Simplon Logo" />
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{{route('dashboard')}}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
                     <span>Tableau de bord</span>
                 </a>
