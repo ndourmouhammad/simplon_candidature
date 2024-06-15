@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+
+
+body {
+background-color: #F0F0F0;
+color: #000;
+font-family: 'Nunito Sans', sans-serif;
+
+}
+.contain {
+    width: 98%;
+    margin: 0 auto;
+    
+}
+.titre h2 {
+  font-size: 24px;
+  color: #CE0033;
+}
+
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -17,7 +38,7 @@
               <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -33,11 +54,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <a href="#" class="nav-link">
+                
+                  <a href="{{ route('candidatures-personnel') }}" class="nav-link">
                     <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
                     <span>Candidatures</span>
-                </a>
+                
                 </a>
               </li>
               <li class="nav-item">
@@ -55,7 +76,7 @@
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
@@ -69,7 +90,7 @@
           </div>
           <div >
              
-            <div class="container mt-5">
+            <div class="contain mt-5">
                 <div class="profile-info">
                     <h4 class="candidate-name">{{ $candidat->prenom }} {{ $candidat->nom }}</h4>
                     <p class="formation">Formation postuleé : Adefnipa</p>

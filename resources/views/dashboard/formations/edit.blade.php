@@ -45,6 +45,10 @@ input{
     display: flex;
     justify-content: space-between
   }
+  .titre h2 {
+  font-size: 22px;
+  color: #CE0033;
+}
     </style>
 
   </head>
@@ -94,7 +98,7 @@ input{
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">

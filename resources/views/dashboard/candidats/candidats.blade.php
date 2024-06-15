@@ -11,6 +11,19 @@
         display: flex;
         flex-direction: column
       }
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
+
+
+body {
+background-color: #F0F0F0;
+color: #000;
+font-family: 'Nunito Sans', sans-serif;
+
+}
+.titre h2 {
+font-size: 22px;
+color: #CE0033;
+}
     </style>
   </head>
   <body>
@@ -23,7 +36,7 @@
               <li class="nav-item">
                 <a href="{{route('dashboard')}}" class="nav-link ">
                     <img src="{{ asset('img/dashboard-24.svg') }}" alt="tableau"> 
-                    <span>Tableau de bord</span>
+                    <span>Dashboard</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -61,7 +74,7 @@
             
             <div class="col-md-8">
                 <div class="titre">
-                    <h5>Plateforme de gestion des candidatures de Simplon SENEGAL</h5>
+                    <h2>Plateforme de gestion des candidatures de Simplon SENEGAL</h2>
                 </div>
             </div>
             <div class="col-md-4 text-md-right">
