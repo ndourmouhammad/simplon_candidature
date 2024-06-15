@@ -107,7 +107,7 @@ nav {
 }
 .profile-card .contact-icons i {
   font-size: 20px;
-  color: #e74c3c;
+  color: #C3002F;
   margin: 10px;
 }
 .profile-card .pdf-link {
@@ -145,8 +145,8 @@ nav {
             border-radius: 8px;
         }
         .btn-custom {
-            background-color: red;
-            border-color: red;
+            background-color: #C3002F;
+            border-color: #C3002F;
             width: 195px;
             height: 36px;
             border-radius: 8px;
