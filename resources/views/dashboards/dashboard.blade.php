@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="{{ asset('candidatss/style.css') }}" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
-=======
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
->>>>>>> release/0.0.18
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
@@ -191,6 +187,10 @@
         font-size: 42px;
         margin-left: 10px;
       }
+      .titre h2 {
+  font-size: 22px;
+  color: #CE0033;
+}
     </style>
     
   </head>
