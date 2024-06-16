@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Candidature::class);
     }
+    public function cohortes()
+    {
+        return $this->hasManyThrough(Cohorte::class, Candidature::class, 'user_id', 'id', 'id', 'cohorte_id');
+    }
 }

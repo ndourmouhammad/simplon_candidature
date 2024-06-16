@@ -8,16 +8,48 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap');
-
-
-      body {
-    background-color: #F0F0F0;
-    color: #000;
-    font-family: 'Nunito Sans', sans-serif;
- 
+body {
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-.contain {
+      .card-equal-height {
+        height: 100%;
+        width: 19rem;
+        background-color: #fff; /* Couleur de fond de la carte */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  padding: 10px; /* Espacement interne */
+  margin: 10px; /* Espacement externe */
+        
+      
+    }
+   
+    .card-text p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    .form-inline {
+      order: -1
+    }
+   .flexer {
+    display: flex;
+    justify-content: space-between;
+    
+   }
+   .add a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    
+   }
+   .flexer #titre h1 {
+    font-size: 42px;
+    font-weight: :bold;
+   }
+   .contain {
     width: 98%;
     margin: 0 auto;
     
@@ -25,48 +57,6 @@
 .titre h2 {
   font-size: 22px;
   color: #CE0033;
-}
-
-
-.info {
-    margin-top: 20px;
-}
-
-.competences ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-
-.update-button {
-    margin-top: 40px;
-   
-}.cohorte {
-  color: #CE0033
-}
-
-.update-button button {
-    background-color: #ffa500;
-    color: #000;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px
-}
-
-.introduction h1 {
-  font-weight: bold;
-  font-size: 42px;
-  color: #CE0033;
-}
-h4 {
-  font-weight: bold;
-  font-size: 20px;
-}
-li, p {
-  font-size: 16px;
-font-style:regular;
 }
     </style>
   </head>
@@ -97,9 +87,9 @@ font-style:regular;
               </li>
               <li class="nav-item">
                 <a href="{{ route('candidatures-personnel') }}" class="nav-link">
-                    <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
-                    <span>Candidatures</span>
-                </a>
+                  <img src="{{ asset('img/candidats.svg') }}" alt="candidature"> 
+                  <span>Candidatures</span>
+              </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('auth.deconnexion') }}" class="nav-link">
@@ -130,9 +120,9 @@ font-style:regular;
             </div>
 
           </div>
-          <div  class="contain">
-            <div class=" header ">
-                <h1>Les détails de la formation</h1>
+          <div class="contain" >
+            <div class="header">
+               
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -140,74 +130,46 @@ font-style:regular;
                 @endif
                 
             </div>
+            <div class="flexer">
+  
+            </div>
             
-               
-            <div class="">
-              <div class="introduction">
-                  <h1>{{ $cohorte->referentiel->libelle }} </h1>
-                  <p class="cohorte">Cohorte {{ $cohorte->promo }}</p>
-                  <h4>Présentation</h4>
-                  <p>{{ $cohorte->referentiel->description }}</p>
-              </div>
-              
-              <div class="competences">
-                <h4>Compétences visées</h4>
-                <ul>
-                    @foreach($cohorte->referentiel->competences as $competence)
-                    <ul>
-                      <li>{{ $competence->libelle }}</li>
-                    </ul>
-                        
-                    @endforeach
-                </ul>
-            </div>
+          
 
-              <div class="competences">
-                <h4 >Les dates utiles</h4>
-                  <div class="competences">
-                    <ul>
-                      <li>Date début de la formation : {{ $cohorte->date_debut }}</li>
-                      <li>Date fin de la formation (prévue) : {{ $cohorte->date_fin }}</li>
-                      <li>Date limite de l'appel à candidature : {{ $cohorte->date_limite }} </li>
-                      <li>Date de finalisation des entretiens : {{ $cohorte->date_decision }}</li>
-                      <li>Durée de la formation : {{ $cohorte->duree }} mois</p>
-                    </ul>
-                      
-                      
-                      
-                      
-                  </div>
-              </div>
-
-              <div class="competences">
-                <h4>Lieu de la formation</h4>
-                <ul>
-                  <li>{{ $cohorte->lieu_formation }}</li>
-                </ul>
-                
-                <h4>Nombre de participants</h4>
-                <ul>
-                  <li>{{ $cohorte->nombre_participants }} participants</li>
-                </ul>
-                
-
-                <h4>Type de référentiel</h4>
-                <ul>
-                  <li>{{$cohorte->referentiel->type}}</li>
-                </ul>
-                
-                
-            </div>
-
-              
-             
+            
+            <div class="ref mb-5">
+            
+              <h1>Candidatures pour la cohorte {{ $cohorte->referentiel->libelle }}</h1>
       
-              <div class="update-button">
-                  <a href="{{ route('modifierFormationForm', $cohorte->id) }}"><button>Mettre à jour la formation</button></a>
-                  <a href="{{ route('candidature.formation', $cohorte->id) }}" class="ml-5">Les candidatures liées à cette formation</a>
-              </div>
+              @if($candidatures->isEmpty())
+                  <p>Aucune candidature pour cette cohorte.</p>
+              @else
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Nom du candidat</th>
+                              <th>Prenom du candidat</th>
+                              <th>Email</th>
+                              <th>Date de candidature</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach($candidatures as $candidature)
+                              <tr>
+                                  <td>{{ $candidature->user->nom }}</td>
+                                  <td>{{ $candidature->user->prenom }}</td>
+                                  <td>{{ $candidature->user->email }}</td>
+                                  <td>{{ $candidature->created_at }}</td>
+                              </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+              @endif
+          </div>
               
           </div>
+          
+
 
         </main>
       </div>

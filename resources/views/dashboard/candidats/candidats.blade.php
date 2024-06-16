@@ -117,7 +117,19 @@ color: #CE0033;
                     <td>{{ $candidat->nom }}</td>
                     <td>{{ $candidat->prenom }}</td>
                     <td>{{ $candidat->email }}</td>
-                    <td>Adefnipa</td>
+                    <td>
+                      @foreach ($candidat->cohortes as $cohorte)
+                    
+                      @if ($candidatsAvecPlusieursCandidatures->contains($candidat))
+                    |{{ $cohorte->referentiel->libelle }}
+                    @else
+                    {{ $cohorte->referentiel->libelle }}
+                  @endif
+                    
+                    
+                    @endforeach
+                    </td>
+                    
                     
                     <td class="action">
 

@@ -18,9 +18,31 @@ class CandidatureController extends Controller
 
     public function listeCandidats()
     {
-        $candidats = User::where('role', 'candidat')->paginate(10);
-        return view('dashboard.candidats.candidats', compact('candidats'));
+        // Récupérer les candidats qui ont au moins une candidature
+        $candidats = User::where('role', 'candidat')
+            ->whereHas('candidatures', function ($query) {
+                $query->whereNotNull('id');
+            })
+            ->paginate(10);
+    
+        // Séparer les candidats qui ont plus d'une candidature
+        $candidatsAvecPlusieursCandidatures = $candidats->filter(function ($candidat) {
+            return $candidat->candidatures->count() > 1;
+        });
+    
+        // Récupérer les cohortes liées aux candidats avec candidatures
+        $cohortes = Cohorte::whereHas('candidatures.user', function ($query) {
+            $query->where('role', 'candidat')
+                  ->whereHas('candidatures', function ($query) {
+                      $query->whereNotNull('id');
+                  });
+        })->with(['referentiel.competences'])->get();
+    
+        return view('dashboard.candidats.candidats', compact('candidats', 'candidatsAvecPlusieursCandidatures', 'cohortes'));
     }
+    
+
+    
 
     //Afficher les détails d'un candidat
     public function detailCandidat($id)
