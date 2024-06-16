@@ -55,6 +55,7 @@ Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatur
 Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
 Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');
 Route::get('/supprimer-candidature/{id}', [CandidatureController::class, 'supprimerCandidature'])->name('supprimer-candidature')->middleware('auth');
+Route::get('/formations/{id}/candidatures', [CohorteController::class, 'candidatures'])->name('candidature.formation');
 });
 
 

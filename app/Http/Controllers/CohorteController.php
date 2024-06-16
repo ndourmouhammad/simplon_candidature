@@ -163,6 +163,18 @@ class CohorteController extends Controller
     return redirect()->route('formations-personnel')->with('success', 'Formation supprimée avec succès.');
 }
 
+public function candidatures($id)
+{
+    // Récupérer la cohorte par son ID
+    $cohorte = Cohorte::findOrFail($id);
+
+    // Récupérer les candidatures liées à cette cohorte
+    $candidatures = $cohorte->candidatures()->with('user')->get();
+
+    // Retourner la vue avec les données nécessaires
+    return view('dashboard.formations.candidatures', compact('cohorte', 'candidatures'));
+}
+
 }
 
     
