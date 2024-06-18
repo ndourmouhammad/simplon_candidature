@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Détail de la formation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
@@ -338,18 +338,18 @@
                 <li class="nav-item">
                     <a class="nav-link " href="{{ route('accueil') }}">Accueil</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">A propos</a>
-                </li>
+                </li> --}}
                 <li class="nav-item active">
                   <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
-                </li>
+                </li> --}}
                 @auth
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('candidatures-historique') }}"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
                 </li> 
                 <li class="nav-item">
                     <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déconnexion</a>

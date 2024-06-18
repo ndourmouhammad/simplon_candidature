@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('formationCss/accueil.css') }}" />
+  <title>détails candidatures</title>
   <style>
     .footer-bg {
       background-color: #C3002F;
@@ -44,6 +45,18 @@
       margin-left:0px;
 
     }
+    .retour {
+   margin: 5px 0px 15px 0px ; 
+}
+.candidater-button {
+            background-color: white;
+            color: #CE0033;
+            border: 2px solid #CE0033;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
   </style>
 </head>
 <body>
@@ -53,20 +66,20 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Accueil</a>
+            <a class="nav-link " href="{{ route('accueil') }}">Accueil</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="#a-propos">A propos</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
-          </li>
+          </li> --}}
           @auth
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-person-circle"></i> <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+            <a class="nav-link active" href="{{ route('candidatures-historique') }}"><i class="bi bi-person-circle"></i> <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
           </li> 
           <li class="nav-item">
             <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déconnexion</a>
@@ -109,6 +122,11 @@
           <h5>Curriculum vitae</h5>
           <a href="{{ Storage::url($candidature->cv_professionnel) }}" target="_blank"><img src="{{ asset('img/image5.png') }}" alt="CV"></a>
         </div>
+        <div class="retour">
+          <a href="{{ route('candidatures-historique') }}">
+              <button class="candidater-button ">Voir l'historique des candidatures</button>
+          </a>
+      </div>
       </div>
     </main>
 

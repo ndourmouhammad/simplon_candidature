@@ -124,18 +124,18 @@
                 <li class="nav-item">
                     <a class="nav-link " href="{{ route('accueil') }}">Accueil</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">A propos</a>
-                </li>
+                </li> --}}
                 <li class="nav-item active">
                   <a class="nav-link" href="{{ route('formations') }}">Nos formations</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
-                </li>
+                </li> --}}
                 @auth
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
+                    <a class="nav-link" href="{{ route('candidatures-historique') }}"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
                 </li> 
                 <li class="nav-item">
                   <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déonnexion</a>

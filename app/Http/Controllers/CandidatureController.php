@@ -178,4 +178,18 @@ class CandidatureController extends Controller
 
         return redirect()->route('candidatures-personnel')->with('status', 'Candidature supprimée avec succès.');
     }
+
+    public function historiques()
+{
+    // Récupérer l'utilisateur connecté
+    $user = auth()->user();
+    
+    // Récupérer les candidatures qui concernent l'utilisateur connecté
+    $candidatures = Candidature::with(['user', 'cohorte.referentiel'])
+                        ->where('user_id', $user->id)
+                        ->get();
+
+    return view('candidatures.historique', compact('candidatures'));
+}
+
 }
