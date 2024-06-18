@@ -39,8 +39,9 @@
             <a class="nav-link" href="#contact">Contact</a>
           </li>
           @auth
+          
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('candidatures-historique') }}">
               <i class="bi bi-person-circle"></i> <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span>
             </a>
           </li>
