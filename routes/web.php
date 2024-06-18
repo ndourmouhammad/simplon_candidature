@@ -32,6 +32,9 @@ Route::get('/candidature/{id}', [CandidatureController::class, 'affiche'])->name
 Route::get('/ajouter/candidature/{cohorte_id}', [CandidatureController::class, 'ajouter_candidature'])->name('ajouter_candidature')->middleware('auth');
 //Route pour traiter l'ajout d'une candidature
 Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
+// Routes pour afficher l'historique des candidatures
+Route::get('/candidatures-historiques', [CandidatureController::class, 'historiques'])->name('candidatures-historique')->middleware('auth');
+
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
