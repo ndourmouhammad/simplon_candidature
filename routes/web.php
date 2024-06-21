@@ -12,62 +12,58 @@ use App\Http\Controllers\ReferentielController;
 
 
 
-// Routes universelles
+
 Route::get('/', [ReferentielController::class, 'accueil'])->name('accueil');
-Route::get('/formations', [CohorteController::class, 'listeFormations'])->name('formations');
-Route::get('/formations/{id}', [CohorteController::class, 'detailFormation'])->name('detail-formation')->where('id', '[0-9]+');
 
-// Authentification
-Route::get('/inscription', [AuthController::class, 'Inscription'])->name('auth.inscription');
-Route::post('/traitement-inscription', [AuthController::class, 'traitement_inscription'])->name('auth.traitement.inscription');
-Route::get('/connexion', [AuthController::class, 'Connexion'])->name('login');
-Route::post('/traitement-connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
-Route::get('/deconnexion', [AuthController::class, 'deconnexion'])->name('auth.deconnexion');
 
-// Postuler
-// Routes d'affichage des candidatures
-Route::get('/candidature/{id}', [CandidatureController::class, 'affiche'])->name('detail_candidature')->middleware('auth');
+Route::controller(CohorteController::class)->group(function () {
+    Route::get('/cohortes', 'listeFormations')->name('formations');
+    Route::get('/cohortes/{id}', 'detailFormation')->name('detail-formation')->where('id', '[0-9]+');
+});
 
-// Route d'affichage du formulaire d'ajout de candidature
-Route::get('/ajouter/candidature/{cohorte_id}', [CandidatureController::class, 'ajouter_candidature'])->name('ajouter_candidature')->middleware('auth');
-//Route pour traiter l'ajout d'une candidature
-Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candidature_traitement'])->name('ajouter_candidature_traitement')->middleware('auth');
-// Routes pour afficher l'historique des candidatures
-Route::get('/candidatures-historiques', [CandidatureController::class, 'historiques'])->name('candidatures-historique')->middleware('auth');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/inscription', 'Inscription')->name('auth.inscription');
+    Route::post('/traitement-inscription', 'traitement_inscription')->name('auth.traitement.inscription');
+    Route::get('/connexion', 'Connexion')->name('login');
+    Route::post('/traitement-connexion', 'traitement_connexion')->name('auth.traitement_connexion');
+    Route::get('/deconnexion', 'deconnexion')->name('auth.deconnexion');
+});
+
+
+Route::controller(CandidatureController::class)->group(function () {
+    Route::middleware('auth')->group(function () {
+        Route::get('/candidature/{id}', 'affiche')->name('detail_candidature');
+        Route::get('/ajouter/candidature/{cohorte_id}', 'ajouter_candidature')->name('ajouter_candidature');
+        Route::post('/ajouter/traitement', 'ajouter_candidature_traitement')->name('ajouter_candidature_traitement');
+        Route::get('/candidatures-historiques', 'historiques')->name('candidatures-historique');
+    });
+});
 
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 
-
 // Personnels
-Route::middleware('App\Http\Middleware\CheckRole:personnel')->group(function () {
-Route::get('/dashboard', [CandidatureController::class, 'dashboard'])->name('dashboard')->middleware('auth');
-Route::get('/candidats', [CandidatureController::class, 'listeCandidats'])->name('candidats')->middleware('auth');
-Route::get('/candidats/{id}', [CandidatureController::class, 'detailCandidat'])->name('detail-candidat')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/supprimer-candidat/{id}', [CandidatureController::class, 'supprimerCandidat'])->name('supprimer-candidat')->middleware('auth');
-Route::get('/formations-personnel', [CohorteController::class, 'formations'])->name('formations-personnel')->middleware('auth');
-Route::get('/formations-personnel/{id}', [CohorteController::class, 'detailFormationPersonnel'])->name('detail-formation-personnel')->where('id', '[0-9]+')->middleware('auth');
-Route::get('/form-ajout-formation', [CohorteController::class, 'ajoutFormationForm'])->name('ajoutFormationForm')->middleware('auth');
-Route::post('/ajout-formation', [CohorteController::class, 'ajoutFormation'])->name('ajout-formation')->middleware('auth');
-Route::get('/form-modifier-formation/{id}', [CohorteController::class, 'modifierFormationForm'])->name('modifierFormationForm')->middleware('auth');
-Route::post('/modifier-formation/{id}', [CohorteController::class, 'modifierFormation'])->name('modifier-formation')->middleware('auth');
-Route::get('/supprimer-formation/{id}', [CohorteController::class, 'supprimerFormation'])->name('supprimer-formation')->middleware('auth');
-Route::get('/candidatures-personnel', [CandidatureController::class, 'candidatures'])->name('candidatures-personnel')->middleware('auth');
+Route::middleware(['auth', 'App\Http\Middleware\CheckRole:personnel'])->group(function () {
 
-// web.php (ou routes/web.php)
-Route::get('/candidature/{id}/edit', [CandidatureController::class, 'edit'])->name('candidature.edit')->middleware('auth');
-Route::post('/candidature/{id}/update', [CandidatureController::class, 'update'])->name('candidature.update')->middleware('auth');
-Route::get('/supprimer-candidature/{id}', [CandidatureController::class, 'supprimerCandidature'])->name('supprimer-candidature')->middleware('auth');
-Route::get('/formations/{id}/candidatures', [CohorteController::class, 'candidatures'])->name('candidature.formation');
+    Route::controller(CandidatureController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/candidats', 'listeCandidats')->name('candidats');
+        Route::get('/candidats/{id}', 'detailCandidat')->name('detail-candidat')->where('id', '[0-9]+');
+        Route::get('/supprimer-candidat/{id}', 'supprimerCandidat')->name('supprimer-candidat');
+        Route::get('/candidatures-personnel', 'candidatures')->name('candidatures-personnel');
+        Route::get('/candidature/{id}/edit', 'edit')->name('candidature.edit');
+        Route::post('/candidature/{id}/update', 'update')->name('candidature.update');
+        Route::get('/supprimer-candidature/{id}', 'supprimerCandidature')->name('supprimer-candidature');
+    });
+
+    Route::controller(CohorteController::class)->group(function () {
+        Route::get('/formations-personnel', 'formations')->name('formations-personnel');
+        Route::get('/formations-personnel/{id}', 'detailFormationPersonnel')->name('detail-formation-personnel')->where('id', '[0-9]+');
+        Route::get('/form-ajout-formation', 'ajoutFormationForm')->name('ajoutFormationForm');
+        Route::post('/ajout-formation', 'ajoutFormation')->name('ajout-formation');
+        Route::get('/form-modifier-formation/{id}', 'modifierFormationForm')->name('modifierFormationForm');
+        Route::post('/modifier-formation/{id}', 'modifierFormation')->name('modifier-formation');
+        Route::get('/supprimer-formation/{id}', 'supprimerFormation')->name('supprimer-formation');
+        Route::get('/formations/{id}/candidatures', 'candidatures')->name('candidature.formation');
+    });
 });
-
-
-
-// Route::get('/auth/connexion', [AuthController::class, 'Connexion'])->name('auth.connexion');
-// Route::post('/auth/connexion', [AuthController::class, 'traitement_connexion'])->name('auth.traitement_connexion');
-
-
-// Route::post('/deconnexion', [AuthController::class, 'deconnexion'])->name('deconnexion');
-// Route::get('/auth/index', function () {
-//     return view('auth.index');
-// })->name('auth.index')->middleware('auth');
