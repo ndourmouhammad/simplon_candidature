@@ -128,7 +128,7 @@
                     </div>
                     <!-- Boutons de soumission et de retour -->
                     <button type="submit" class="btn btn-envoyer">Envoyer</button>
-                    <a href="/formations" class="btn btn-annuler">Annuler</a>
+                    <a href="{{ route('formations') }}" class="btn btn-annuler">Annuler</a>
                 </form>
             </div>
         </div>

@@ -84,7 +84,7 @@ class AuthController extends Controller
     public function deconnexion()
     {
         Auth::logout();
-        return redirect('/connexion');
+        return redirect(route('login'));
     }
 
     // Affiche le tableau de bord en fonction du rôle
