@@ -35,6 +35,9 @@ Route::post('/ajouter/traitement', [CandidatureController::class, 'ajouter_candi
 // Routes pour afficher l'historique des candidatures
 Route::get('/candidatures-historiques', [CandidatureController::class, 'historiques'])->name('candidatures-historique')->middleware('auth');
 
+//routes pour recherche formations
+Route::get('/search-formations', [CohorteController::class, 'search'])->name('search-formations');
+
 
 Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 

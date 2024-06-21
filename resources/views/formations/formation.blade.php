@@ -138,7 +138,7 @@
                     <a class="nav-link" href="{{ route('candidatures-historique') }}"><i class="bi bi-person-circle"></i>  <span class="font-weight-bold">{{ Auth::user()->prenom }} {{ Auth::user()->nom }}</span></a>
                 </li> 
                 <li class="nav-item">
-                  <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déonnexion</a>
+                  <a href="{{ route('auth.deconnexion') }}" class="btn btn-outline-danger">Déconnexion</a>
                 </li>
                 @endauth
             </ul>
@@ -156,11 +156,13 @@
     <main class="container mt-5 ">
         <div class="d-flex justify-content-between align-items-center  my-5">
             <h2></h2>
-        <div class="form-inline  ">
-            <input type="text" class="form-control mr-2" id="emailFilter" placeholder="formation">
-            <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
-        </div>
+        <!-- Formulaire de recherche -->
+        <form action="{{ route('search-formations') }}" method="GET">
+            <div class=" d-flex">
+                <input type="text" class="form-controlv mr-2" id="query" name="query" placeholder="Entrez votre recherche...">
+                <button type="submit" class="btn btn-dark">Rechercher</button>
     </div>
+</div>
     <div>
         @if(session('status'))
         <div class="alert alert-danger">
@@ -170,7 +172,7 @@
     </div>
         <div class="mb-5">
             <div class="row">
-                @foreach($cohortes as $cohorte)
+                @forelse ($cohortes as $cohorte)
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body d-flex flex-column">
@@ -180,7 +182,9 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <p class="text-center">Aucune formation trouvée.</p>
+            @endforelse
             </div>
         </div>
     </main>

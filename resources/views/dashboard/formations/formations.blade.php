@@ -128,10 +128,14 @@ body {
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="form-inline">
-                    <input type="text" class="form-control mr-2" id="emailFilter" placeholder="adresse email">
-                    <button class="btn btn-dark" onclick="filterTable()">filtrer</button>
-                </div>
+        <!-- Formulaire de recherche -->
+        <form action="{{ route('search-formations') }}" method="GET">
+            <div class=" d-flex">
+                <input type="text" class="mr-2 form-control" id="query" name="query" placeholder="Entrez votre recherche...">
+                <button type="submit" class="btn btn-dark">Rechercher</button>
+
+            </div>
+        </form>
             </div>
             <div class="flexer">
               <div id="titre">
@@ -147,8 +151,8 @@ body {
             
             <div class="ref mb-5">
               <div class="row">
-                  @foreach($cohortes as $cohorte)
-                  <div class="col-md-4 mb-4 flex">
+                @forelse ($cohortes as $cohorte)
+                <div class="col-md-4 mb-4 flex">
                       <div class="card card-equal-height">
                           <div class="card-body d-flex flex-column">
                               <h5 class="card-title">
@@ -170,8 +174,9 @@ body {
                           </div>
                       </div>
                   </div>
-                  @endforeach
-                  
+                  @empty
+                  <p class="text-center">Aucune formation trouvée.</p>
+              @endforelse                  
               </div>
               
           </div>

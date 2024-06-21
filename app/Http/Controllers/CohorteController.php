@@ -6,6 +6,7 @@ use App\Models\Cohorte;
 use App\Models\Competence;
 use App\Models\Referentiel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CohorteController extends Controller
 {
@@ -23,7 +24,44 @@ class CohorteController extends Controller
 
         return view('formations.formation', compact('cohortes', 'referentiels', 'competences'));
     }
+    // Méthode pour effectuer la recherche de cohorte
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
 
+        // Vérifier si l'utilisateur est connecté et son rôle
+        if (Auth::check()) {
+            $role = Auth::user()->role;
+
+            // Si l'utilisateur a pour rôle "candidat" ou n'a pas de rôle défini, rediriger vers "formations.formation"
+            if ($role === 'candidat' || !$role) {
+                $cohortes = Cohorte::whereHas('referentiel', function ($q) use ($query) {
+                    $q->where('libelle', 'like', "%$query%");
+                })->orWhere('description', 'like', "%$query%")
+                    ->get();
+
+                return view('formations.formation', compact('cohortes'));
+            }
+
+            // Si l'utilisateur a pour rôle "personnel", rediriger vers "dashboard.formations.formations"
+            if ($role === 'personnel') {
+                $cohortes = Cohorte::whereHas('referentiel', function ($q) use ($query) {
+                    $q->where('libelle', 'like', "%$query%");
+                })->orWhere('description', 'like', "%$query%")
+                    ->get();
+
+                return view('dashboard.formations.formations', compact('cohortes'));
+            }
+        }
+
+        // Si l'utilisateur n'est pas connecté ou n'a pas de rôle défini, effectuer la recherche sans condition de rôle spécifique
+        $cohortes = Cohorte::whereHas('referentiel', function ($q) use ($query) {
+            $q->where('libelle', 'like', "%$query%");
+        })->orWhere('description', 'like', "%$query%")
+            ->get();
+
+        return view('formations.formation', compact('cohortes'));
+    }
     
 
 
